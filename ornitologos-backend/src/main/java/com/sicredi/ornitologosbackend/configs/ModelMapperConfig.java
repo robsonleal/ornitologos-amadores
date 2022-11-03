@@ -18,6 +18,7 @@ public class ModelMapperConfig {
         modelMapper.createTypeMap(UsuarioDto.class, Usuario.class);
         modelMapper.createTypeMap(UsuarioCadastroDto.class, Usuario.class);
 
+
         return  modelMapper;
     }
 }

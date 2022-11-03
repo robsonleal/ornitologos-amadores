@@ -7,6 +7,6 @@ import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 public interface AutenticacaoService {
 
     UsuarioDto autenticarUsuario(UsuarioLoginDto usuarioLogin);
-    UsuarioDto findByEmail(String email);
+    UsuarioDto getUsuarioDtoPeloEmail(String email);
     UsuarioDto cadastrar(UsuarioCadastroDto usuarioCadastroDto);
 }
