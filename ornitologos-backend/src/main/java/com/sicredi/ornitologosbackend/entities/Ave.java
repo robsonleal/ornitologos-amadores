@@ -1,18 +1,18 @@
 package com.sicredi.ornitologosbackend.entities;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
-@Table(name="aves")
+@Table(name = "aves")
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Aves {
+public class Ave {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,8 +55,8 @@ public class Aves {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Aves aves = (Aves) o;
-        return Objects.equals(id, aves.id) && Objects.equals(nomePt, aves.nomePt) && Objects.equals(nomeEn, aves.nomeEn) && Objects.equals(nomeLt, aves.nomeLt) && Objects.equals(tamanho, aves.tamanho) && Objects.equals(genero, aves.genero) && Objects.equals(cor, aves.cor) && Objects.equals(familia, aves.familia) && Objects.equals(habitat, aves.habitat);
+        Ave ave = (Ave) o;
+        return Objects.equals(id, ave.id) && Objects.equals(nomePt, ave.nomePt) && Objects.equals(nomeEn, ave.nomeEn) && Objects.equals(nomeLt, ave.nomeLt) && Objects.equals(tamanho, ave.tamanho) && Objects.equals(genero, ave.genero) && Objects.equals(cor, ave.cor) && Objects.equals(familia, ave.familia) && Objects.equals(habitat, ave.habitat);
     }
 
     @Override
