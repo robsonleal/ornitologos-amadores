@@ -1,4 +1,4 @@
 package com.sicredi.ornitologosbackend.services;
 
-public class AvesService {
+public class AveService {
 }
