@@ -23,7 +23,7 @@ public class AutenticacaoController {
     private final UsuarioAuthenticationProvider userAuthenticationProvider;
 
     @PostMapping("/login")
-    public ResponseEntity<UsuarioLoginDto> login(@AuthenticationPrincipal UsuarioLoginDto user) {
+    public ResponseEntity<UsuarioDto> login(@AuthenticationPrincipal UsuarioDto user) {
         user.setToken(userAuthenticationProvider.criarToken(user.getEmail()));
         return ResponseEntity.ok(user);
     }
