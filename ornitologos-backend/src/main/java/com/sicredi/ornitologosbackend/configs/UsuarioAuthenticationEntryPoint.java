@@ -24,7 +24,7 @@ public class UsuarioAuthenticationEntryPoint  implements AuthenticationEntryPoin
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        MAPPER.writeValue(response.getOutputStream(),new CaminhoNaoAutorizadoException());
+        MAPPER.writeValue(response.getOutputStream(),new CaminhoNaoAutorizadoException().getMessage());
     }
 
 }

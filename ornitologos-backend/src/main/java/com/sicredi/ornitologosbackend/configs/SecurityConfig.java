@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private  static  final String[] USUARIO= {"/api/v1/usuarios"};
     private  static  final String[] PUBLIC= {"/api/v1/auth/login","/api/v1/auth/cadastro"};
 
     private final UsuarioAuthenticationEntryPoint userAuthenticationEntryPoint;
@@ -27,7 +26,6 @@ public class SecurityConfig {
                 .addFilterBefore(new JwtAuthFilter(userAuthenticationProvider), EmailSenhaAuthFilter.class)
                 .authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
-                .antMatchers(USUARIO).hasAnyRole("USUARIO")
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()

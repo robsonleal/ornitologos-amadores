@@ -3,7 +3,6 @@ package com.sicredi.ornitologosbackend.controllers;
 import com.sicredi.ornitologosbackend.configs.UsuarioAuthenticationProvider;
 import com.sicredi.ornitologosbackend.dtos.UsuarioCadastroDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
-import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 import com.sicredi.ornitologosbackend.services.AutenticacaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,15 +22,15 @@ public class AutenticacaoController {
     private final UsuarioAuthenticationProvider userAuthenticationProvider;
 
     @PostMapping("/login")
-    public ResponseEntity<UsuarioDto> login(@AuthenticationPrincipal UsuarioDto user) {
-        user.setToken(userAuthenticationProvider.criarToken(user.getEmail()));
-        return ResponseEntity.ok(user);
+    public ResponseEntity<UsuarioDto> login(@AuthenticationPrincipal UsuarioDto usuario) {
+        usuario.setToken(userAuthenticationProvider.criarToken(usuario.getEmail()));
+        return ResponseEntity.ok(usuario);
     }
 
     @PostMapping("/cadastro")
-    public  ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioCadastroDto user){
+    public  ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioCadastroDto usuario){
 
-        UsuarioDto createdUser=autenticacaoService.cadastrar(user);
+        UsuarioDto createdUser=autenticacaoService.cadastrar(usuario);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
