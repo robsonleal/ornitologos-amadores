@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
@@ -12,8 +13,8 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ave {
-
+public class Ave implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,34 +22,42 @@ public class Ave {
 
     @Column(name = "nomePortugues")
     @NotNull
+    @Setter
     private String nomePt;
 
     @Column(name = "nomeIngles")
     @NotNull
+    @Setter
     private String nomeEn;
 
     @Column(name = "nomeLatim")
     @NotNull
+    @Setter
     private String nomeLt;
 
     @Column(name = "tamanho")
     @NotNull
+    @Setter
     private Integer tamanho;
 
     @Column(name = "genero")
     @NotNull
+    @Setter
     private String genero;
 
     @Column(name = "cor")
     @NotNull
+    @Setter
     private String cor;
 
     @Column(name = "familia")
     @NotNull
+    @Setter
     private String familia;
 
     @Column(name = "habitat")
     @NotNull
+    @Setter
     private String habitat;
 
     @Override
