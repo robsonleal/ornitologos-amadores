@@ -2,6 +2,7 @@ package com.sicredi.ornitologosbackend.services;
 
 import com.sicredi.ornitologosbackend.dtos.UsuarioCadastroDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
+import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 import com.sicredi.ornitologosbackend.entities.Usuario;
 import com.sicredi.ornitologosbackend.exceptions.EmailJaCadastradoException;
 import com.sicredi.ornitologosbackend.repositories.UsuarioRepository;
@@ -128,30 +129,4 @@ class AutenticacaoServiceImplTest {
         assertThat(autenticacaoService.usuarioJaCadastrado(usuarioCadastro))
                 .isTrue();
     }
-
-    //    @Test
-//    void deveAutenticarUsuario(){
-//
-//        var usuarioLogin=UsuarioLoginDto.builder()
-//                .email("teste@gmail")
-//                .senha("test")
-//                .build();
-//
-//        var usuarioDto= UsuarioDto.builder()
-//                .email("teste@gmail")
-//                .build();
-//
-//        var usuarioEntity= Usuario.builder()
-//                .email("teste@gmail")
-//                .senha("$2y$10$tIQrRBi94hWsUrtK4y5Au.xfEhXz3e6vimRalCB6kxGEGGXsCBsJG")
-//                .build();
-//
-//
-//        when(usuarioRepository.findByEmail("teste@gmail"))
-//                .thenReturn(Optional.ofNullable(usuarioEntity));
-//
-//        assertThat(autenticacaoService.autenticarUsuario(usuarioLogin))
-//                .isEqualTo(usuarioDto);
-//
-//    }
 }
