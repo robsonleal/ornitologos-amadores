@@ -4,9 +4,9 @@ import com.sicredi.ornitologosbackend.dtos.AveDto;
 import com.sicredi.ornitologosbackend.entities.Ave;
 import com.sicredi.ornitologosbackend.repositories.AveRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class AveService {
 
+    @Autowired
     private AveRepository aveRepository;
 
     public List<AveDto> listarAves(){
