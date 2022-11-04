@@ -24,5 +24,4 @@ public class Avistamento {
     @ManyToOne
     @JoinColumn(name = "ave_id")
     private Ave ave;
-
 }

@@ -1,5 +1,6 @@
 package com.sicredi.ornitologosbackend.services;
 
+import com.sicredi.ornitologosbackend.dtos.AvistamentoDto;
 import com.sicredi.ornitologosbackend.entities.Avistamento;
 import com.sicredi.ornitologosbackend.repositories.AvistamentoRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,10 @@ public class AvistamentoServiceImp implements AvistamentoService {
     @Override
     public Avistamento inserirAvistamento(Avistamento avistamento) {
         return avistamentoRepository.save(avistamento);
+    }
+
+    @Override
+    public Avistamento converteDoDTO(AvistamentoDto avistamentoDto) {
+        return new Avistamento(avistamentoDto.getId(), avistamentoDto.getData(), avistamentoDto.getHorario(), avistamentoDto.getLocal(), avistamentoDto.getAve());
     }
 }
