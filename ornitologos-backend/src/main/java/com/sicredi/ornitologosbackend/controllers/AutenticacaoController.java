@@ -38,16 +38,4 @@ public class AutenticacaoController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCadastrado);
     }
-
-    @GetMapping("/all")
-    public ResponseEntity<String> listar(@AuthenticationPrincipal UsuarioDto usuarioLoginDto){
-        return ResponseEntity.ok(usuarioLoginDto.getEmail());
-    }
-
-    @ExceptionHandler(SenhaInvalidaException.class)
-    public ResponseEntity<String> handleModeloNaoExisteException(SenhaInvalidaException e){
-        return ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .body("deu ruim");
-    }
 }
