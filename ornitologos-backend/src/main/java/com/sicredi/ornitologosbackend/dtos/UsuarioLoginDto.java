@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuarioDto {
+public class UsuarioLoginDto {
 
     private Long id;
-    private String nome;
     private String email;
+    private String senha;
     private String token;
 }
