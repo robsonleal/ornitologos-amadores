@@ -15,13 +15,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler({EmailJaCadastradoException.class})
-    public ResponseEntity<Object> handleUsuarioCadastradoException(RuntimeException ex, WebRequest request){
+    public ResponseEntity<Object> handleEmailCadastradoException(RuntimeException ex, WebRequest request){
 
         return handleExceptionInternal(ex, new ApiErroDto(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler({SenhaInvalidaException.class})
-    public ResponseEntity<Object> handleSenhaInvalida(RuntimeException ex, WebRequest request){
+    public ResponseEntity<Object> handleSenhaInvalidaException(RuntimeException ex, WebRequest request){
 
         return handleExceptionInternal(ex, new ApiErroDto(ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
