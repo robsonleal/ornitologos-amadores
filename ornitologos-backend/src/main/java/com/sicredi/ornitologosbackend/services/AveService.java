@@ -9,13 +9,25 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class AveService {
 
-    private final AveRepository aveRepository;
+    private AveRepository aveRepository;
 
+    public List<AveDto> listarAves(){
+        List<Ave> obj = aveRepository.findAll();
+        return obj.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
+    }
+    public AveDto encontrarAve(String busca){
+        Optional<Ave> obj = aveRepository
+                .findByNomePtContainingOrNomeEnContainingOrNomeLtContainingOrCorOrHabitat
+                        (busca,busca,busca,busca,busca);
+        Ave entity = obj.orElseThrow(() -> new RuntimeException("entity not found"));
+        return new AveDto(entity);
+    }
     public AveDto inserirAve(AveDto dto){
         Ave entity = new Ave();
         entity.setNomePt(dto.getNomePt());
@@ -30,8 +42,4 @@ public class AveService {
         return new AveDto(entity);
     }
 
-    public List<Ave> encontrarAve(String busca){
-        List<Ave> obj = aveRepository.findByNomePtContainingOrNomeEnContainingOrNomeLtContainingOrCorOrHabitat(busca,busca,busca,busca,busca);
-        return obj;
-    }
 }

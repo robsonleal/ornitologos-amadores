@@ -11,20 +11,27 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController(value = "/aves")
 @RequiredArgsConstructor
+@RestController
+@RequestMapping(value = "/aves")
 public class AveController {
 
-    private final AveService aveService;
+    private AveService aveService;
 
-    @GetMapping(value = "{busca}")
-    public ResponseEntity<List<Ave>> encontrarAve(@PathVariable String busca){
-        List<Ave> aveList = aveService.encontrarAve(busca);
+    @GetMapping
+    public ResponseEntity<List<AveDto>> listarAves(){
+        List<AveDto> aveList = aveService.listarAves();
         return ResponseEntity.ok().body(aveList);
     }
 
+    @GetMapping(value = "/{busca}")
+    public ResponseEntity<AveDto> encontrarAve(@PathVariable String busca){
+        AveDto aveDto = aveService.encontrarAve(busca);
+        return ResponseEntity.ok().body(aveDto);
+    }
 
-    @PostMapping("/add")
+
+    @PostMapping
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
         dto = aveService.inserirAve(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
