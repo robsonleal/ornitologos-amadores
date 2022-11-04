@@ -1,17 +1,15 @@
 package com.sicredi.ornitologosbackend.dtos;
 
+import com.sicredi.ornitologosbackend.entities.Ave;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 
 @Getter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class AveDto {
 
     private Long id;
@@ -23,4 +21,8 @@ public class AveDto {
     private String cor;
     private String familia;
     private String habitat;
+
+    public AveDto(Ave ave) {
+
+    }
 }

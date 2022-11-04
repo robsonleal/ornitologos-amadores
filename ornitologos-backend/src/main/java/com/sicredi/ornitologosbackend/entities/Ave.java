@@ -21,34 +21,42 @@ public class Ave {
 
     @Column(name = "nomePortugues")
     @NotNull
+    @Setter
     private String nomePt;
 
     @Column(name = "nomeIngles")
     @NotNull
+    @Setter
     private String nomeEn;
 
     @Column(name = "nomeLatim")
     @NotNull
+    @Setter
     private String nomeLt;
 
     @Column(name = "tamanho")
     @NotNull
+    @Setter
     private Integer tamanho;
 
     @Column(name = "genero")
     @NotNull
+    @Setter
     private String genero;
 
     @Column(name = "cor")
     @NotNull
+    @Setter
     private String cor;
 
     @Column(name = "familia")
     @NotNull
+    @Setter
     private String familia;
 
     @Column(name = "habitat")
     @NotNull
+    @Setter
     private String habitat;
 
     @Override
