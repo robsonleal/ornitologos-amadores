@@ -33,10 +33,10 @@ class AutenticacaoControllerTest {
     private AutenticacaoService autenticacaoService;
 
     @Test
-    void deveCadastrarUsuario() throws Exception {
+    void deveRetornar201AoCadastrarUsuario() throws Exception {
 
         var usuarioCadastro= UsuarioCadastroDto.builder()
-                .email("teste@gmail")
+                .email("teste@gmafds")
                 .nome("nome")
                 .senha("123")
                 .build();
@@ -60,4 +60,76 @@ class AutenticacaoControllerTest {
 
         verify(autenticacaoService).cadastrar(usuarioCadastro);
     }
+
+    @Test
+    void deveRetornar400QuandoEmailVazio() throws Exception {
+
+        var usuarioCadastro= UsuarioCadastroDto.builder()
+                .nome("nome")
+                .senha("123")
+                .build();
+
+        var json= new Gson().toJson(usuarioCadastro);
+
+        mockMvc.perform(post("/api/v1/auth/cadastro")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.[0].message").value("O email é obrigatório!"));
+    }
+
+
+    @Test
+    void deveRetornar400QuandoEmailInvalido() throws Exception {
+
+        var usuarioCadastro= UsuarioCadastroDto.builder()
+                .nome("nome")
+                .email("teste")
+                .senha("123")
+                .build();
+
+        var json= new Gson().toJson(usuarioCadastro);
+
+        mockMvc.perform(post("/api/v1/auth/cadastro")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.[0].message").value("Email inválido!"));
+    }
+
+    @Test
+    void deveRetornar400QuandoSenhaVazia() throws Exception {
+
+        var usuarioCadastro= UsuarioCadastroDto.builder()
+                .email("teste@gmail")
+                .nome("nome")
+                .build();
+
+        var json= new Gson().toJson(usuarioCadastro);
+
+        mockMvc.perform(post("/api/v1/auth/cadastro")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.[0].message").value("A senha é obrigatória!"));
+    }
+
+    @Test
+    void deveRetornar400QuandoNomeMenorQue3Letras() throws Exception {
+
+        var usuarioCadastro= UsuarioCadastroDto.builder()
+                .email("teste@gmail")
+                .senha("teste")
+                .nome("n")
+                .build();
+
+        var json= new Gson().toJson(usuarioCadastro);
+
+        mockMvc.perform(post("/api/v1/auth/cadastro")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.[0].message").value("O nome deve ter pelo menos 3 letras!"));
+    }
+
 }
