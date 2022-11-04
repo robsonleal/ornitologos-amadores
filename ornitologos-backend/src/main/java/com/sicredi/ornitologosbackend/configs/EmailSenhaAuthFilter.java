@@ -20,7 +20,8 @@ public class EmailSenhaAuthFilter extends OncePerRequestFilter {
     private static final ObjectMapper MAPPER= new ObjectMapper();
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
         if ("/api/v1/auth/login".equals(request.getServletPath())
                 && HttpMethod.POST.matches(request.getMethod())) {

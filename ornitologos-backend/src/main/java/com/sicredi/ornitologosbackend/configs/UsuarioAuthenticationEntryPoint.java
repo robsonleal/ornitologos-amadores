@@ -1,7 +1,7 @@
 package com.sicredi.ornitologosbackend.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sicredi.ornitologosbackend.exceptions.CaminhoNaoAutorizadoException;
+import com.sicredi.ornitologosbackend.exceptions.dtos.ApiErroDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
@@ -24,7 +24,8 @@ public class UsuarioAuthenticationEntryPoint  implements AuthenticationEntryPoin
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        MAPPER.writeValue(response.getOutputStream(),new CaminhoNaoAutorizadoException().getMessage());
+       MAPPER.writeValue(response.getOutputStream(),new ApiErroDto("Não autorizado!"));
+
     }
 
 }
