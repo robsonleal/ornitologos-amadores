@@ -20,8 +20,13 @@ export function Topbar({ position }: TopbarProps) {
     <AppBar position={position}>
       <Toolbar>
         <CameraIcon sx={{ mr: 2 }} />
-        <Typography variant="h6" color="inherit" noWrap>
-          Album layout
+        <Typography
+          textTransform={"uppercase"}
+          variant="h6"
+          color="inherit"
+          noWrap
+        >
+          Ornitólogos amadores
         </Typography>
       </Toolbar>
     </AppBar>

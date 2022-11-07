@@ -1,10 +1,10 @@
 import { Grid, CssBaseline, Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Topbar } from "./components/Topbar";
-import { Banner } from "./components/Banner";
-import { Footer } from "./components/Footer";
-import { GridCard } from "./components/GridCard";
+import { Topbar } from "./shared/components/Topbar";
+import { Banner } from "./shared/components/Banner";
+import { Footer } from "./shared/components/Footer";
+import { GridCard } from "./shared/components/GridCard";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

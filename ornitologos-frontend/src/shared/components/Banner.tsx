@@ -17,7 +17,7 @@ export function Banner() {
           color="text.primary"
           gutterBottom
         >
-          Album layout
+          Ornitólogos Amadores
         </Typography>
         <Typography
           variant="h5"
