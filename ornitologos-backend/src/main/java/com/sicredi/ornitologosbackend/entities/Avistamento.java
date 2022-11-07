@@ -3,16 +3,17 @@ package com.sicredi.ornitologosbackend.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+
+import java.io.Serializable;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class Avistamento implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -26,4 +27,11 @@ public class Avistamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ave_id")
     private Ave ave;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+
+
 }

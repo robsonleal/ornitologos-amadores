@@ -5,3 +5,4 @@ CREATE TABLE usuario(
     nome varchar(255),
     PRIMARY KEY(id)
 );
+

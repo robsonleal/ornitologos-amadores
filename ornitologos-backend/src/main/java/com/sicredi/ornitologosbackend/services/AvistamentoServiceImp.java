@@ -28,7 +28,7 @@ public class AvistamentoServiceImp implements AvistamentoService {
 
     @Override
     public Avistamento converteDoDTO(AvistamentoDto avistamentoDto) {
-        return new Avistamento(avistamentoDto.getId(), avistamentoDto.getData(), avistamentoDto.getHorario(), avistamentoDto.getLocal(), avistamentoDto.getAve());
+        return new Avistamento(avistamentoDto.getId(),avistamentoDto.getData(),avistamentoDto.getHorario(),avistamentoDto.getLocal(),avistamentoDto.getAve(),null);
     }
 
     @Override

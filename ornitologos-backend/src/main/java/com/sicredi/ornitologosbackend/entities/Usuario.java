@@ -2,10 +2,9 @@ package com.sicredi.ornitologosbackend.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,4 +19,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+
+    @OneToMany
+    @JoinColumn(name = "usuario_id")
+    private Set<Avistamento> avistamentos=new HashSet<>();
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -28,6 +29,7 @@ class UsuarioRepositoryTest {
                 .id(1L)
                 .email("test@gmail.com")
                 .nome("test")
+                       .avistamentos(new HashSet<>())
                 .senha("$2a$12$Dct0YyQfmCVCiOgcAcUW3.j9iqTZzyycWyb0J1abWSlAsqmYMllzC")
                 .build());
     }
