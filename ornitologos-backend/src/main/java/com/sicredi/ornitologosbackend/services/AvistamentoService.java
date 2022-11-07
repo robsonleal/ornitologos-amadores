@@ -6,10 +6,11 @@ import com.sicredi.ornitologosbackend.entities.Avistamento;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public interface AvistamentoService {
 
-    List<Avistamento> listarTodos();
+    Set<Avistamento> listarTodos(Long id);
 
     Avistamento inserirAvistamento(Avistamento avistamento);
 
