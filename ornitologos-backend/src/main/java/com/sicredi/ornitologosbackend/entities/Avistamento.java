@@ -7,12 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
+import java.io.Serializable;
+
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Avistamento {
+public class Avistamento implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +31,7 @@ public class Avistamento {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+
 
 }
