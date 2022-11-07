@@ -2,7 +2,6 @@ package com.sicredi.ornitologosbackend.services;
 
 import com.sicredi.ornitologosbackend.dtos.UsuarioCadastroDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
-import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 import com.sicredi.ornitologosbackend.entities.Usuario;
 import com.sicredi.ornitologosbackend.exceptions.EmailJaCadastradoException;
 import com.sicredi.ornitologosbackend.repositories.UsuarioRepository;
@@ -13,8 +12,10 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -23,6 +24,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
+@ActiveProfiles("test")
 class AutenticacaoServiceImplTest {
 
     @Mock
@@ -41,6 +43,7 @@ class AutenticacaoServiceImplTest {
     void deveCadastrarUsuario(){
         var usuario= Usuario.builder()
                 .email("teste3@gmail")
+                .avistamentos(new HashSet<>())
                 .build();
 
         var usuarioDto= UsuarioDto.builder()
