@@ -3,6 +3,7 @@ package com.sicredi.ornitologosbackend.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 
-public class Avistamento {
+public class Avistamento implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

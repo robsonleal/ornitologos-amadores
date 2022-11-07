@@ -1,22 +1,10 @@
 
 ì
 cornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/OrnitologosBackendApplication.java,f\a\fa52d1fe6ab4bc09510d0d01e75135bac072c72f
-Ü
-Vornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/entities/Usuario.java,f\1\f1845a49ddd185a9a2ddbe6357252f907d1f5065
-Ç
-Rornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/entities/Ave.java,0\f\0fa7814b83ba43fb4bd527f54e80e3a77783398a
 â
 Yornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/services/AveService.java,e\4\e45cd7ee4040f2fd9db93f7992ee198e31a7e7dd
-è
-_ornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/configs/ModelMapperConfig.java,2\0\2090cf596e04ef93c980be7c43028d8c6ed5628f
-K
-ornitologos-backend/pom.xml,1\f\1fff79adc899e8c44cd6dfc28d025844cc51d881
-â
-Yornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/AvistamentoDto.java,1\c\1c2a3fbf71e351bb1fdacbd035fe5fd4a79ac568
 Å
 Qornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/AveDto.java,c\b\cb766961b64c809bffc49670fed8cff0ef8a4406
-ò
-hornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/repositories/AvistamentoRepository.java,9\d\9d66a41170a19fd82425176fb192dcf9a869857b
 ç
 ]ornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/UsuarioCadastroDto.java,7\4\742d758dfd39fca2f95fa8f436aa39c859097583
 Ö

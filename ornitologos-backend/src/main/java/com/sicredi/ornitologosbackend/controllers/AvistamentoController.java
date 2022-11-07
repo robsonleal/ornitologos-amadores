@@ -37,5 +37,4 @@ public class AvistamentoController {
         return ResponseEntity.created(uri).build();
     }
 
-
 }
