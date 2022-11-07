@@ -29,11 +29,13 @@ public class AvistamentoController {
         return ResponseEntity.ok().body(list);
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public ResponseEntity<Void> inserirAvistamento(@RequestBody AvistamentoDto avistamentoDto) {
-//        Avistamento avistamento = avistamentoServiceImp.converteDoDTO(avistamentoDto);
-//        avistamento = avistamentoServiceImp.inserirAvistamento(avistamento);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(avistamento.getId()).toUri();
-//        return ResponseEntity.created(uri).build();
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> inserirAvistamento(@RequestBody AvistamentoDto avistamentoDto) {
+        Avistamento avistamento = avistamentoServiceImp.converteDoDTO(avistamentoDto);
+        avistamento = avistamentoServiceImp.inserirAvistamento(avistamento);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(avistamento.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+
 }

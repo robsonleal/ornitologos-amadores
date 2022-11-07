@@ -1,10 +1,6 @@
 
 ì
 cornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/OrnitologosBackendApplication.java,f\a\fa52d1fe6ab4bc09510d0d01e75135bac072c72f
-Ö
-Uornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/UsuarioDto.java,f\c\fcde644598a0f2263ba50e8fa4e3ed3d009e1e00
-î
-dornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/repositories/UsuarioRepository.java,6\e\6e590d130670245dbf11170b88a0865e0f883a43
 Ü
 Vornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/entities/Usuario.java,f\1\f1845a49ddd185a9a2ddbe6357252f907d1f5065
 Ç
@@ -15,3 +11,21 @@ Yornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/services/AveSe
 _ornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/configs/ModelMapperConfig.java,2\0\2090cf596e04ef93c980be7c43028d8c6ed5628f
 K
 ornitologos-backend/pom.xml,1\f\1fff79adc899e8c44cd6dfc28d025844cc51d881
+â
+Yornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/AvistamentoDto.java,1\c\1c2a3fbf71e351bb1fdacbd035fe5fd4a79ac568
+Å
+Qornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/AveDto.java,c\b\cb766961b64c809bffc49670fed8cff0ef8a4406
+ò
+hornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/repositories/AvistamentoRepository.java,9\d\9d66a41170a19fd82425176fb192dcf9a869857b
+ç
+]ornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/UsuarioCadastroDto.java,7\4\742d758dfd39fca2f95fa8f436aa39c859097583
+Ö
+Uornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/UsuarioDto.java,f\c\fcde644598a0f2263ba50e8fa4e3ed3d009e1e00
+ä
+Zornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/dtos/UsuarioLoginDto.java,c\4\c4cef1396e6c7bf1b935e8bb168cd3e8d976a760
+P
+ ornitologos-frontend/src/App.css,7\a\7afcb1e3cad0aae43dcf08d96b7a39c8ffaf2124
+P
+ ornitologos-frontend/src/App.tsx,6\6\669eea1636d54c326abcf66288fd253528018531
+ñ
+fornitologos-backend/src/main/java/com/sicredi/ornitologosbackend/services/AutenticacaoServiceImpl.java,c\4\c41a59850a44e5836ae481dd1cfb0b8933ec72fd
