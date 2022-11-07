@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -17,8 +18,8 @@ public class AvistamentoServiceImp implements AvistamentoService {
     private final AvistamentoRepository avistamentoRepository;
 
     @Override
-    public List<Avistamento> listarTodos() {
-        return avistamentoRepository.findAll();
+    public Set<Avistamento> listarTodos(Long id) {
+        return avistamentoRepository.findByUsuarioId(id);
     }
 
     @Override

@@ -12,4 +12,5 @@ import java.util.Set;
 public interface AvistamentoRepository extends JpaRepository<Avistamento, Long> {
 
     Set<Avistamento> findByUsuarioId(Long id);
+
 }
