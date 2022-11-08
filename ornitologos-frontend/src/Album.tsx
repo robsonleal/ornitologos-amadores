@@ -1,7 +1,7 @@
 import { Container, CssBaseline, Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { Banner } from './shared/components/Banner';
+import { Banner } from './shared/components/banner/Banner';
 import { Footer } from './shared/components/Footer';
 import { GridCard } from './shared/components/GridCard';
 import { Topbar } from './shared/components/Topbar';

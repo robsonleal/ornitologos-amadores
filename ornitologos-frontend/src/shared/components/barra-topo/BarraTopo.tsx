@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
-import { MaterialUISwitch } from '../MaterialUISwitch';
+import { MaterialUISwitch } from './MaterialUISwitch';
 
 export function BarraTopo() {
   const pages = ['PAGINA INICIAL', 'AVISTAMENTOS', 'CATÁLOGO'];
