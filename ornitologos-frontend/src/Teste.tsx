@@ -5,8 +5,10 @@ export function Teste() {
   const { toggleTheme } = useAppThemeContext();
 
   return (
-    <Button variant='contained' onClick={toggleTheme}>
-      Hello world!
-    </Button>
+    <>
+      <Button variant='contained' onClick={toggleTheme}>
+        Hello world!
+      </Button>
+    </>
   );
 }

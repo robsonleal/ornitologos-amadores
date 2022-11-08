@@ -1,12 +1,12 @@
-import CameraIcon from "@mui/icons-material/PhotoCamera";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import CameraIcon from '@mui/icons-material/PhotoCamera';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 
 let positions:
-  | "fixed"
-  | "absolute"
-  | "sticky"
-  | "static"
-  | "relative"
+  | 'fixed'
+  | 'absolute'
+  | 'sticky'
+  | 'static'
+  | 'relative'
   | undefined;
 
 interface TopbarProps {
@@ -19,9 +19,9 @@ export function Topbar({ position }: TopbarProps) {
       <Toolbar>
         <CameraIcon sx={{ mr: 2 }} />
         <Typography
-          textTransform={"uppercase"}
-          variant="h6"
-          color="inherit"
+          textTransform='uppercase'
+          variant='h6'
+          color='inherit'
           noWrap
         >
           Ornitólogos amadores
