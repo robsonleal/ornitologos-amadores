@@ -11,7 +11,7 @@ import {
   ListItemText,
   useTheme,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
 import { useDrawerContext } from '../../contexts';
 
@@ -30,6 +30,9 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  const resolvedPath = useResolvedPath(to);
+  const match = useMatch({ path: resolvedPath.pathname, end: false });
+
   const handleClick = () => {
     navigate(to);
     onClick?.();
@@ -37,7 +40,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
 
   return (
     <ListItem>
-      <ListItemButton onClick={handleClick}>
+      <ListItemButton selected={!!match} onClick={handleClick}>
         <ListItemIcon>
           <Icon>{icon}</Icon>
         </ListItemIcon>
@@ -54,11 +57,12 @@ interface IMenuLateralProps {
 export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
   const theme = useTheme();
 
-  const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
 
   return (
     <>
       <Drawer
+        anchor='right'
         open={isDrawerOpen}
         variant='temporary'
         onClose={toggleDrawerOpen}
@@ -86,20 +90,21 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
 
           <Box flex={1}>
             <List>
-              <ListItemLink
-                icon='person'
-                to='/pagina-inicial'
-                label='Ver Perfil'
-                onClick={toggleDrawerOpen}
-              />
+              {drawerOptions.map((drawerOption) => (
+                <ListItemLink
+                  key={drawerOption.path}
+                  icon={drawerOption.icon}
+                  to={drawerOption.path}
+                  label={drawerOption.label}
+                  onClick={toggleDrawerOpen}
+                />
+              ))}
             </List>
           </Box>
         </Box>
       </Drawer>
 
-      <Box height='100vh' marginLeft={theme.spacing(28)}>
-        {children}
-      </Box>
+      <Box height='100vh'>{children}</Box>
     </>
   );
 };

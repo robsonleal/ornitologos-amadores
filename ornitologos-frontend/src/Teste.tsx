@@ -1,9 +1,20 @@
 import { Button } from '@mui/material';
+import { useEffect } from 'react';
 import { useAppThemeContext, useDrawerContext } from './shared/contexts';
 
 export function Teste() {
   const { toggleTheme } = useAppThemeContext();
-  const { toggleDrawerOpen } = useDrawerContext();
+  const { toggleDrawerOpen, setDrawerOption } = useDrawerContext();
+
+  useEffect(() => {
+    setDrawerOption([
+      {
+        label: 'Ver Perfil',
+        icon: 'person',
+        path: '/pagina-inicial',
+      },
+    ]);
+  }, []);
 
   return (
     <>
