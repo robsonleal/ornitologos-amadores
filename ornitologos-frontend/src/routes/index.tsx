@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import SignIn from '../pages/SignIn';
 
 import { Teste } from '../Teste';
 
@@ -7,6 +8,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path='/pagina-inicial' element={<Teste />} />
       <Route path='*' element={<Navigate to='/pagina-inicial' />} />
+      <Route path='/login' element={<SignIn />} />
     </Routes>
   );
 };

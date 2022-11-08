@@ -1,4 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
+import Album from './Album';
+import SignIn from './pages/SignIn';
 
 import { AppRoutes } from './routes';
 import { MenuLateral } from './shared/components/menu-lateral/MenuLateral';
