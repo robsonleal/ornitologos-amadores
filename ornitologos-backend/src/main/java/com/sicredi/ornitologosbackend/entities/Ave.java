@@ -20,17 +20,17 @@ public class Ave implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nomePortugues")
+    @Column(name = "nome_portugues")
     @NotNull
     @Setter
     private String nomePt;
 
-    @Column(name = "nomeIngles")
+    @Column(name = "nome_ingles")
     @NotNull
     @Setter
     private String nomeEn;
 
-    @Column(name = "nomeLatim")
+    @Column(name = "nome_latim")
     @NotNull
     @Setter
     private String nomeLt;
@@ -38,7 +38,7 @@ public class Ave implements Serializable {
     @Column(name = "tamanho")
     @NotNull
     @Setter
-    private Integer tamanho;
+    private String tamanho;
 
     @Column(name = "genero")
     @NotNull

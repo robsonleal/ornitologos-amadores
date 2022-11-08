@@ -27,8 +27,8 @@ public class AveController {
     }
 
     @GetMapping(path = "/{busca}")
-    public ResponseEntity<AveDto> encontrarAve(@PathVariable String busca){
-        AveDto aveDto = aveService.encontrarAve(busca);
+    public ResponseEntity<List<AveDto>> encontrarAve(@PathVariable("busca") String busca){
+        List<AveDto> aveDto = aveService.encontrarAves(busca);
         return ResponseEntity.ok().body(aveDto);
     }
 

@@ -7,8 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -17,17 +19,35 @@ public class AveService {
 
     @Autowired
     private AveRepository aveRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public List<AveDto> listarAves(){
         List<Ave> obj = aveRepository.findAll();
         return obj.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
     }
-    public AveDto encontrarAve(String busca){
-        Optional<Ave> obj = aveRepository
-                .findByNomePtContainingOrNomeEnContainingOrNomeLtContainingOrCorOrHabitat
-                        (busca,busca,busca,busca,busca);
-        Ave entity = obj.orElseThrow(() -> new RuntimeException("entity not found"));
-        return new AveDto(entity);
+    public List<AveDto> encontrarAves(String busca){
+//        String sql =
+//                ("SELECT id, nomePt, nomeEn, nomeLt, tamanho, genero, cor, familia, habitat FROM Ave WHERE lower(cor) LIKE '%"+busca
+//                        +"%' OR upper(cor) LIKE '%"+ busca
+//                        +"%' OR lower(genero) LIKE '%"+busca
+//                        +"%' OR upper(genero) LIKE '%"+busca
+//                        +"%' OR lower(familia) LIKE '%"+busca
+//                        +"%' OR upper(familia) LIKE '%"+busca
+//                        +"%' OR lower(habitat) LIKE '%"+busca
+//                        +"%' OR upper(habitat) LIKE '%"+busca
+//                        +"%' OR lower(nomeEn) LIKE '%"+busca
+//                        +"%' OR upper(nomeEn) LIKE '%"+busca
+//                        +"%' OR lower(nomeLt) LIKE '%"+busca
+//                        +"%' OR upper(nomeLt) LIKE '%"+busca
+//                        +"%' OR lower(nomePt) LIKE '%"+busca
+//                        +"%' OR upper(nomePt) LIKE '%"+busca
+//                        +"%'");
+//        Query query = entityManager.createQuery(sql);
+//        List<Ave> result = query.getResultList();
+//        return result.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
+        List<Ave> aves = aveRepository.encontrarAves("%"+busca+"%");
+        return aves.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
     }
     public AveDto inserirAve(AveDto dto){
         Ave entity = new Ave();
