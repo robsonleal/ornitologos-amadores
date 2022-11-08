@@ -1,8 +1,6 @@
 import CameraIcon from "@mui/icons-material/PhotoCamera";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
-let frutas: "banana" | "maça";
-
 let positions:
   | "fixed"
   | "absolute"

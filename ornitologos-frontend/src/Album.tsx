@@ -1,10 +1,10 @@
-import { Container, CssBaseline, Grid } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Container, CssBaseline, Grid } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { Banner } from "./shared/components/Banner";
-import { Footer } from "./shared/components/Footer";
-import { GridCard } from "./shared/components/GridCard";
-import { Topbar } from "./shared/components/Topbar";
+import { Banner } from './shared/components/Banner';
+import { Footer } from './shared/components/Footer';
+import { GridCard } from './shared/components/GridCard';
+import { Topbar } from './shared/components/Topbar';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -14,14 +14,14 @@ export default function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Topbar position="relative" />
+      <Topbar position='relative' />
       <main>
         <Banner />
 
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <GridCard value={card} />
+              <GridCard value={card} key={card} />
             ))}
           </Grid>
         </Container>

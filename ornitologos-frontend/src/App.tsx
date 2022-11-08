@@ -1,15 +1,14 @@
-import { ThemeProvider } from "@mui/material";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
-import { AppRoutes } from "./routes";
-import { LightTheme } from "./shared/themes";
+import { AppRoutes } from './routes';
+import { AppThemeProvider } from './shared/contexts';
 
 export default function App() {
   return (
-    <ThemeProvider theme={LightTheme}>
+    <AppThemeProvider>
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
-    </ThemeProvider>
+    </AppThemeProvider>
   );
 }
