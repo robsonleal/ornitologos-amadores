@@ -14,7 +14,9 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-        Ornitologos amadores, 
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -23,7 +25,7 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignUp() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -45,49 +47,62 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#FFFFFF"}} src="/icon.svg"/>
+         <Avatar sx={{ m: 1, bgcolor: "#FFFFFF"}} src="/icon.svg"/>
           <Typography component="h1" variant="h5">
-            Fazer login
+            Cadastrar-se
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Senha"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-name"
+                  name="nome"
+                  required
+                  fullWidth
+                  id="nome"
+                  label="Nome"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Senha"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Entrar
+            Cadastrar-se
             </Button>
-            <Grid container>
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/cadastro" variant="body2">
-                  {"Não tem uma conta? Cadastre-se"}
+                <Link href="/login" variant="body2">
+                 Já tem uma conta? Entrar
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

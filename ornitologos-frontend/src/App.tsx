@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn';
 
 import { AppRoutes } from './routes';
 import { MenuLateral } from './shared/components/menu-lateral/MenuLateral';
+
 import { AppThemeProvider, DrawerProvider } from './shared/contexts';
 
 export default function App() {
