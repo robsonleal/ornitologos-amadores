@@ -26,7 +26,7 @@ export const PaginaInicial = () => {
         spacing={2}
         justifyContent='center'
       >
-        <Button variant='contained' color='secondary'>
+        <Button variant='contained' color='primary'>
           Ir para o catálogo
         </Button>
         <Button variant='outlined'>Entrar</Button>

@@ -1,4 +1,5 @@
-import { Box } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
+import { Container } from '@mui/system';
 
 interface ILayoutBaseDePaginaProps {
   children: React.ReactNode;
@@ -11,15 +12,26 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({
   barraDeFerramentas: barraDeFerramentas,
   titulo,
 }) => {
+  const theme = useTheme();
+
   return (
-    <Box height='100%' display='flex' flexDirection='column' gap={1}>
-      <Box>{titulo}</Box>
+    <Container>
+      <Box
+        height={theme.spacing(13)}
+        display='flex'
+        alignItems='center'
+        gap={5}
+        flexDirection='row'
+      >
+        <Typography variant='h4' component='h4'>
+          {titulo}
+        </Typography>
 
-      {barraDeFerramentas && <Box>{barraDeFerramentas}</Box>}
-
+        {barraDeFerramentas && <Box flexGrow={1}>{barraDeFerramentas}</Box>}
+      </Box>
       <Box flex={1} overflow='auto'>
         {children}
       </Box>
-    </Box>
+    </Container>
   );
 };

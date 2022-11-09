@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Paper, Typography, useTheme } from '@mui/material';
 
 interface ILayoutBaseDePaginaInicialProps {
   children: React.ReactNode;
@@ -18,17 +18,16 @@ export const LayoutBaseDePaginaInicial: React.FC<
   return (
     <Box
       display='flex'
+      alignItems='center'
+      justifyContent='center'
+      flexDirection='row'
+      height={780}
       gap={1}
+      component={Paper}
+      elevation={3}
       sx={{
-        bgcolor: theme.palette.background.paper,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
         margin: theme.spacing(6),
         borderRadius: theme.shape.borderRadius,
-        boxShadow: 4,
-        height: 780,
       }}
     >
       <Box maxWidth='sm'>
