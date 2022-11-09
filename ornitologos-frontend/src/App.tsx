@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { AppRoutes } from './routes';
-import { BarraTopo } from './shared/components/barra-topo/BarraTopo';
-import { MenuLateral } from './shared/components/menu-lateral/MenuLateral';
+import { BarraTopo, MenuLateral } from './shared/components';
+
 import { AppThemeProvider, DrawerProvider } from './shared/contexts';
 
 export default function App() {
