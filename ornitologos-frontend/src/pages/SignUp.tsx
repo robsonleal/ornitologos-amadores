@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,17 +8,50 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Usuario from '../models/Usuario';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { cadastroUsuario } from '../shared/services/api/Service';
+
 
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const [userResult, setUserResult] = useState<Usuario>(
+    {
+        nome: '',
+        email: '',
+        senha: ''
+    })
+
+
+    const [user, setUser] = useState<Usuario>(
+      {
+          nome: '',
+          email: '',
+          senha: ''
+      })
+  
+
+
+    useEffect(() => {
+  }, [userResult])
+
+
+  function updateModel(e: ChangeEvent<HTMLInputElement>) {
+
+    setUser({
+        ...user,
+        [e.target.name]: e.target.value
+    })
+
+}
+
+
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    cadastroUsuario(`/api/v1/auth/cadastro`, user,setUserResult);
   };
 
   return (
@@ -49,6 +81,7 @@ export default function SignUp() {
                   id="nome"
                   label="Nome"
                   autoFocus
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -59,17 +92,19 @@ export default function SignUp() {
                   label="Email"
                   name="email"
                   autoComplete="email"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="senha"
                   label="Senha"
                   type="password"
-                  id="password"
+                  id="senha"
                   autoComplete="new-password"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
                 />
               </Grid>
             </Grid>
