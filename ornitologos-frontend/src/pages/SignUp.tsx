@@ -9,13 +9,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Usuario from '../models/Usuario';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { cadastroUsuario } from '../shared/services/api/Service';
-
-
-const theme = createTheme();
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function SignUp() {
+
+  const theme = createTheme();
+
+  const [loading, setLoading] = useState(false);
+  const timer = useRef<number>();
 
   const [userResult, setUserResult] = useState<Usuario>(
     {
@@ -32,7 +35,15 @@ export default function SignUp() {
           senha: ''
       })
   
-
+  const buttonSx = {
+    ...({
+      '&:hover': {
+        bgcolor: 'outlined'
+      },
+      mt:3,
+      mb:2
+    }),
+  };
 
     useEffect(() => {
   }, [userResult])
@@ -47,11 +58,18 @@ export default function SignUp() {
 
 }
 
-
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    cadastroUsuario(`/api/v1/auth/cadastro`, user,setUserResult);
+     setLoading(true);
+
+    if (!loading) {
+      timer.current = window.setTimeout(() => {
+        cadastroUsuario(`/api/v1/auth/cadastro`, user,setUserResult);
+        setLoading(false);
+      }, 2000);
+    }
+
   };
 
   return (
@@ -108,14 +126,30 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            <Box sx={{ m: 1, position: 'relative' }}>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={buttonSx}
+              disabled={loading}
             >
             Cadastrar-se
             </Button>
+            {loading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              color: 'outlined',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+            }}
+          />  
+        )}
+        </Box>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
