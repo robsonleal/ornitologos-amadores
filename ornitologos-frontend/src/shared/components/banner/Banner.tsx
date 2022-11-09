@@ -6,6 +6,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+import Link from '@mui/material/Link';
 
 import MulherImg from '../../assets/mulher_binoculos_d.png';
 
@@ -57,7 +58,11 @@ export function Banner() {
             justifyContent='center'
           >
             <Button variant='contained'>Ir para o catálogo</Button>
-            <Button variant='outlined'>Entrar</Button>
+            <Button variant='outlined'>
+              <Link href="/login" style={{textDecoration: 'none'}} >
+                    Entrar
+              </Link>
+              </Button>
           </Stack>
         </Container>
       </Box>
