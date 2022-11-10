@@ -16,3 +16,16 @@ export const cadastroUsuario = async(url: any,dados: any,setDado:any) => {
     }); 
 }
 
+
+export const fazerLogin = async(url: any,dados: any,setDado:any) => { 
+
+    await api.post(url,dados)
+    .then(response => {
+        setDado(response.data)
+        console.log(response.data)
+    })
+    .catch((error) =>{
+        console.log(error.response.data)
+    }); 
+}
+
