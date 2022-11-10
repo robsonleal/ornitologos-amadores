@@ -1,20 +1,26 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { AppRoutes } from './routes';
-import { BarraTopo } from './shared/components/barra-topo/BarraTopo';
-import { MenuLateral } from './shared/components/menu-lateral/MenuLateral';
-import { AppThemeProvider, DrawerProvider } from './shared/contexts';
+import { BarraTopo, MenuLateral } from './shared/components';
+
+import {
+  AppThemeProvider,
+  BarraTopoProvider,
+  DrawerProvider,
+} from './shared/contexts';
 
 export default function App() {
   return (
     <AppThemeProvider>
       <DrawerProvider>
-        <BrowserRouter>
-          <MenuLateral>
-            <BarraTopo />
-            <AppRoutes />
-          </MenuLateral>
-        </BrowserRouter>
+        <BarraTopoProvider>
+          <BrowserRouter>
+            <MenuLateral>
+              <BarraTopo />
+              <AppRoutes />
+            </MenuLateral>
+          </BrowserRouter>
+        </BarraTopoProvider>
       </DrawerProvider>
     </AppThemeProvider>
   );
