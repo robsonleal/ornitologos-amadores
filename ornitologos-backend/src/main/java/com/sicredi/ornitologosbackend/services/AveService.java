@@ -4,13 +4,20 @@ import com.sicredi.ornitologosbackend.dtos.AveDto;
 import com.sicredi.ornitologosbackend.entities.Ave;
 import com.sicredi.ornitologosbackend.repositories.AveRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -19,35 +26,19 @@ public class AveService {
 
     @Autowired
     private AveRepository aveRepository;
-    @PersistenceContext
-    private EntityManager entityManager;
 
-    public List<AveDto> listarAves(){
-        List<Ave> obj = aveRepository.findAll();
-        return obj.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
+    private final ModelMapper modelMapper;
+
+    public Page<List<Ave>> listarAves(Pageable pageable){
+//        Page<List<Ave>> ave = aveRepository.findAll(pageable);
+//        List<AveDto> dto = ave.stream().map(x-> new AveDto((Ave) x)).collect(Collectors.toList());
+        return aveRepository.findAll(pageable);
     }
-    public List<AveDto> encontrarAves(String busca){
-//        String sql =
-//                ("SELECT id, nomePt, nomeEn, nomeLt, tamanho, genero, cor, familia, habitat FROM Ave WHERE lower(cor) LIKE '%"+busca
-//                        +"%' OR upper(cor) LIKE '%"+ busca
-//                        +"%' OR lower(genero) LIKE '%"+busca
-//                        +"%' OR upper(genero) LIKE '%"+busca
-//                        +"%' OR lower(familia) LIKE '%"+busca
-//                        +"%' OR upper(familia) LIKE '%"+busca
-//                        +"%' OR lower(habitat) LIKE '%"+busca
-//                        +"%' OR upper(habitat) LIKE '%"+busca
-//                        +"%' OR lower(nomeEn) LIKE '%"+busca
-//                        +"%' OR upper(nomeEn) LIKE '%"+busca
-//                        +"%' OR lower(nomeLt) LIKE '%"+busca
-//                        +"%' OR upper(nomeLt) LIKE '%"+busca
-//                        +"%' OR lower(nomePt) LIKE '%"+busca
-//                        +"%' OR upper(nomePt) LIKE '%"+busca
-//                        +"%'");
-//        Query query = entityManager.createQuery(sql);
-//        List<Ave> result = query.getResultList();
-//        return result.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
-        List<Ave> aves = aveRepository.encontrarAves("%"+busca+"%");
+    public List<AveDto> encontrarAves(String busca, Pageable pageable){
+        List<Ave> aves = aveRepository.encontrarAves("%"+busca+"%", pageable);
         return aves.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
+//        List<AveDto> aveDtos = aves.stream().map(ave -> modelMapper.map(ave, AveDto.class)).collect(Collectors.toList());
+//        return aveDtos;
     }
     public AveDto inserirAve(AveDto dto){
         Ave entity = new Ave();
@@ -60,7 +51,10 @@ public class AveService {
         entity.setGenero(dto.getGenero());
         entity.setHabitat(dto.getHabitat());
         entity = aveRepository.save(entity);
-        return new AveDto(entity);
+        AveDto aveDto = new AveDto(entity);
+        return aveDto;
+//        AveDto aveDto = new AveDto();
+//        BeanUtils.copyProperties(dto, aveDto);
     }
 
 }
