@@ -1,6 +1,8 @@
 interface UsuarioLogin {
-    email: string;
-    senha: string;
+    id?:number
+    email?: string;
+    senha?: string;
+    token?: string;
 }
 
 export default UsuarioLogin;

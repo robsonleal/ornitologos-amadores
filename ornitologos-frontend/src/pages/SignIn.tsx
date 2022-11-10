@@ -13,6 +13,7 @@ import UsuarioLogin from '../models/UsuarioLogin';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { fazerLogin } from '../shared/services/api/Service';
 import { CircularProgress } from '@mui/material';
+import useLocalStorage from 'react-use-localstorage';
 
 function Copyright(props: any) {
   return (
@@ -30,19 +31,22 @@ export default function SignIn() {
 const theme = useTheme();
 
 const [loading, setLoading] = useState(false);
+const [token, setToken] = useLocalStorage('token');
+
 const timer = useRef<number>();
 
 const [userResult, setUserResult] = useState<UsuarioLogin>(
   {
       email: '',
-      senha: ''
+      senha: '',
+      token:'',
   })
 
 
   const [user, setUser] = useState<UsuarioLogin>(
     {
         email: '',
-        senha: ''
+        senha: '',
     })
 
 
@@ -73,10 +77,10 @@ const [userResult, setUserResult] = useState<UsuarioLogin>(
     event.preventDefault();
     setLoading(true);
 
-    console.log(user)
     if (!loading) {
       timer.current = window.setTimeout(() => {
-        fazerLogin(`/api/v1/auth/login`, user,setUserResult);
+        fazerLogin(`/api/v1/auth/login`, user,setUserResult,setToken);
+        console.log(token);
         setLoading(false);
       }, 2000);
     }
