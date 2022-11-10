@@ -11,9 +11,9 @@ import Container from '@mui/material/Container';
 import {ThemeProvider, useTheme } from '@mui/material/styles';
 import UsuarioLogin from '../models/UsuarioLogin';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { fazerLogin } from '../shared/services/api/Service';
 import { CircularProgress } from '@mui/material';
 import useLocalStorage from 'react-use-localstorage';
+import { fazerLogin } from '../shared/services/api/AuthService';
 
 function Copyright(props: any) {
   return (
@@ -72,21 +72,17 @@ const [userResult, setUserResult] = useState<UsuarioLogin>(
       })
     }
   
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
 
     if (!loading) {
       timer.current = window.setTimeout(() => {
         fazerLogin(`/api/v1/auth/login`, user,setUserResult,setToken);
-        console.log(token);
         setLoading(false);
       }, 2000);
     }
-  };
-
- 
+};
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

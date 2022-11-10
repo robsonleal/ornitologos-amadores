@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import {ThemeProvider, useTheme } from '@mui/material/styles';
 import Usuario from '../models/Usuario';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { cadastroUsuario } from '../shared/services/api/Service';
+import { cadastroUsuario } from '../shared/services/api/UsuarioService';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function SignUp() {
