@@ -9,6 +9,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {ThemeProvider, useTheme } from '@mui/material/styles';
+import UsuarioLogin from '../models/UsuarioLogin';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { CircularProgress } from '@mui/material';
+import useLocalStorage from 'react-use-localstorage';
+import { fazerLogin } from '../shared/services/api/AuthService';
+
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -24,16 +30,59 @@ export default function SignIn() {
 
 const theme = useTheme();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+const [loading, setLoading] = useState(false);
+const [token, setToken] = useLocalStorage('token');
 
- 
+const timer = useRef<number>();
+
+const [userResult, setUserResult] = useState<UsuarioLogin>(
+  {
+      email: '',
+      senha: '',
+      token:'',
+  })
+
+
+  const [user, setUser] = useState<UsuarioLogin>(
+    {
+        email: '',
+        senha: '',
+    })
+
+
+    const buttonSx = {
+      ...({
+        '&:hover': {
+          bgcolor: 'outlined'
+        },
+        mt:3,
+        mb:2
+      }),
+    };
+  
+      useEffect(() => {
+    }, [userResult])
+  
+  
+    function updateModel(e: ChangeEvent<HTMLInputElement>) {
+  
+      setUser({
+          ...user,
+          [e.target.name]: e.target.value
+      })
+    }
+  
+ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (!loading) {
+      timer.current = window.setTimeout(() => {
+        fazerLogin(`/api/v1/auth/login`, user,setUserResult,setToken);
+        setLoading(false);
+      }, 2000);
+    }
+};
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -60,25 +109,44 @@ const theme = useTheme();
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="senha"
               label="Senha"
               type="password"
-              id="password"
+              id="senha"
               autoComplete="current-password"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
             />
-            <Button
+             <Box sx={{ m: 1, position: 'relative' }}>
+              
+             <Button
               type="submit"
               fullWidth
-              sx={{ mt: 3, mb: 2 }}
+              sx={buttonSx}
               variant="contained"
+              disabled={loading}
             >
               Entrar
             </Button>
+            {loading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              color: 'outlined',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+            }}
+          />  
+        )}
+             </Box>
             <Grid container>
               <Grid item>
                 <Link href="/cadastro" variant="body2">

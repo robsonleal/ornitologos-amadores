@@ -48,7 +48,7 @@ export const AppRoutes = () => {
       <Route path='/pagina-inicial' element={<PaginaInicial />} />
       <Route path='/catalogo' element={<Catalago />} />
       <Route path='/login' element={<SignIn />} />
-      <Route path='/cadastro' element={<SignUp />} />
+      <Route path='/cadastro-usuario' element={<SignUp />} />
       <Route path='*' element={<Navigate to='/pagina-inicial' />} />
     </Routes>
   );

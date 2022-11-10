@@ -14,6 +14,8 @@ import {
 
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useDrawerContext } from '../../contexts';
+import { sair } from '../../services/api/AuthService';
+
 
 interface IListItemLinkProps {
   to: string;
@@ -34,8 +36,8 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
   const match = useMatch({ path: resolvedPath.pathname, end: false });
 
   const handleClick = () => {
+    onClick?.(sair());
     navigate(to);
-    onClick?.();
   };
 
   return (
