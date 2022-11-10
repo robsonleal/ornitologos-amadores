@@ -1,7 +1,7 @@
-interface User {
+interface Usuario {
     nome: string;
     email: string;
     senha: string;
 }
 
-export default User;
+export default Usuario;
