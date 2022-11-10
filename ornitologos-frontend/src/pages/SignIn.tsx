@@ -8,8 +8,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {ThemeProvider, useTheme } from '@mui/material/styles';
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -21,9 +20,10 @@ function Copyright(props: any) {
   );
 }
 
-const theme = createTheme();
-
 export default function SignIn() {
+
+const theme = useTheme();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,6 +33,7 @@ export default function SignIn() {
     });
   };
 
+ 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -46,7 +47,7 @@ export default function SignIn() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "#FFFFFF"}} src="/icon.svg"/>
-          <Typography component="h1" variant="h5">
+          <Typography component={Box} variant="h5">
             Fazer login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -73,8 +74,8 @@ export default function SignIn() {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              variant="contained"
             >
               Entrar
             </Button>
@@ -89,6 +90,6 @@ export default function SignIn() {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
-    </ThemeProvider>
+   </ThemeProvider>
   );
 }
