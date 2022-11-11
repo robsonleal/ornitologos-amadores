@@ -7,6 +7,7 @@ interface ILayoutBaseDePaginaInicialProps {
   image?: {
     src: string;
     alt: string;
+    width?: number;
   };
 }
 
@@ -22,7 +23,7 @@ export const LayoutBaseDePaginaInicial: React.FC<
       justifyContent='center'
       flexDirection='row'
       height={780}
-      gap={1}
+      gap={15}
       component={Paper}
       elevation={3}
       sx={{

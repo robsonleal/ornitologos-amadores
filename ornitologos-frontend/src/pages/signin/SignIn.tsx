@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
+import HomemImg from '../../shared/assets/homem_binoculos.png';
 import { Copyright } from '../../shared/components/Copyright';
 import { useAuthContext } from '../../shared/contexts';
 import { LayoutBaseDePaginaInicial } from '../../shared/layouts';
@@ -21,6 +22,10 @@ const loginSchema = yup.object().shape({
 export const SignIn = () => {
   const navigate = useNavigate();
   const { login } = useAuthContext();
+  const image = {
+    src: HomemImg,
+    alt: 'Homem segurando binúculos',
+  };
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,7 +61,7 @@ export const SignIn = () => {
   };
 
   return (
-    <LayoutBaseDePaginaInicial titulo='Fazer login'>
+    <LayoutBaseDePaginaInicial titulo='Fazer login' image={image}>
       <Box
         sx={{
           marginTop: 8,
