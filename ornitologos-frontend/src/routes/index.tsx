@@ -19,9 +19,9 @@ export const AppRoutes = () => {
         path: '/pagina-inicial',
       },
       {
-        label: 'Sair',
-        icon: 'logout',
-        path: '/pagina-inicial',
+        label: 'Meus avistamentos',
+        icon: 'visibility',
+        path: '/avistamento',
       },
     ]);
   }, []);
@@ -35,10 +35,6 @@ export const AppRoutes = () => {
       {
         label: 'Ver catálogo',
         path: '/catalogo',
-      },
-      {
-        label: 'Avistamentos',
-        path: '/avistamentos',
       },
     ]);
   }, []);
