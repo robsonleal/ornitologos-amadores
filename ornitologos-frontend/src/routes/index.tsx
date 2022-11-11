@@ -1,10 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { useEffect } from 'react';
-import { Catalago } from '../pages';
-import { PaginaInicial } from '../pages/pagina-inicial/PaginaInicial';
-import { SignIn } from '../pages/signin/SignIn';
-import SignUp from '../pages/SignUp';
+import { Catalago, PaginaInicial, SignIn, SignUp } from '../pages';
 import { useBarraTopoContext, useDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
