@@ -3,10 +3,11 @@ import {
   Button,
   CircularProgress,
   Grid,
-  Link,
   TextField,
+  Typography,
 } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { Copyright } from '../../shared/components/Copyright';
 import { useAuthContext } from '../../shared/contexts';
@@ -18,6 +19,7 @@ const loginSchema = yup.object().shape({
 });
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const { login } = useAuthContext();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +28,10 @@ export const SignIn = () => {
   const [senhaError, setSenhaError] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+
+  const handleClickNavigate = (to: string) => {
+    navigate(to);
+  };
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -114,9 +120,13 @@ export const SignIn = () => {
           </Box>
           <Grid container>
             <Grid item>
-              <Link href='/cadastro' variant='body2'>
-                {'Não tem uma conta? Cadastre-se'}
-              </Link>
+              <Typography
+                onClick={() => handleClickNavigate('/cadastro-usuario')}
+                variant='body2'
+                sx={{ textDecoration: 'underline', cursor: 'pointer' }}
+              >
+                Não tem uma conta? Cadastre-se
+              </Typography>
             </Grid>
           </Grid>
         </Box>
