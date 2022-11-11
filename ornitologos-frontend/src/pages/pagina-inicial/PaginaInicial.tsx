@@ -17,7 +17,7 @@ export const PaginaInicial = () => {
     src: MulherImg,
     alt: 'Mulher segurando binóculos',
   };
-  const handleClick = (to: string) => {
+  const handleClickNavigate = (to: string) => {
     navigate(to);
   };
 
@@ -33,13 +33,17 @@ export const PaginaInicial = () => {
         spacing={2}
         justifyContent='center'
       >
-        <Button variant='contained' color='primary'>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={() => handleClickNavigate('/catalogo')}
+        >
           Ir para o catálogo
         </Button>
         {!isAuthenticated && (
           <Button
             variant='outlined'
-            onClick={() => handleClick('/cadastro-usuario')}
+            onClick={() => handleClickNavigate('/cadastro-usuario')}
           >
             Registrar
           </Button>
