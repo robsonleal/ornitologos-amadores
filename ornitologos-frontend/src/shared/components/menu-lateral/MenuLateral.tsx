@@ -13,9 +13,7 @@ import {
 } from '@mui/material';
 
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { useDrawerContext } from '../../contexts';
-import { sair } from '../../services/api/AuthService';
-
+import { useAuthContext, useDrawerContext } from '../../contexts';
 
 interface IListItemLinkProps {
   to: string;
@@ -36,7 +34,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
   const match = useMatch({ path: resolvedPath.pathname, end: false });
 
   const handleClick = () => {
-    onClick?.(sair());
+    onClick?.();
     navigate(to);
   };
 
@@ -60,6 +58,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
   const theme = useTheme();
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
+  const { logout } = useAuthContext();
 
   return (
     <>
@@ -70,7 +69,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
         onClose={toggleDrawerOpen}
       >
         <Box
-          width={theme.spacing(28)}
+          width={theme.spacing(35)}
           height='100%'
           display='flex'
           flexDirection='column'
@@ -101,6 +100,14 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
                   onClick={toggleDrawerOpen}
                 />
               ))}
+              <ListItemLink
+                icon='logout'
+                to='/pagina-inicial'
+                label='Sair'
+                onClick={() => {
+                  logout(), toggleDrawerOpen();
+                }}
+              />
             </List>
           </Box>
         </Box>

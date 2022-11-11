@@ -2,6 +2,7 @@ import {
   AppBar,
   Avatar,
   Box,
+  Button,
   Container,
   IconButton,
   List,
@@ -17,11 +18,12 @@ import {
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import {
   useAppThemeContext,
+  useAuthContext,
   useBarraTopoContext,
   useDrawerContext,
 } from '../../contexts';
-import { Logo } from '../Logo';
 
+import { Logo } from '../Logo';
 import { MaterialUISwitch } from './MaterialUISwitch';
 
 interface IItemMenuProps {
@@ -56,9 +58,15 @@ const ListItemMenu: React.FC<IItemMenuProps> = ({ to, label }) => {
 
 export function BarraTopo() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const { toggleTheme } = useAppThemeContext();
   const { toggleDrawerOpen } = useDrawerContext();
+  const { isAuthenticated } = useAuthContext();
   const { barraTopoOptions } = useBarraTopoContext();
+
+  const hadleClick = (to: string) => {
+    navigate(to);
+  };
 
   return (
     <AppBar position='static'>
@@ -97,13 +105,23 @@ export function BarraTopo() {
             </List>
           </Box>
 
-          <Box>
+          <Box display='flex' alignItems='center' gap={5}>
             <MaterialUISwitch onChange={toggleTheme} />
-            <Tooltip title='Menu do usuário'>
-              <IconButton onClick={toggleDrawerOpen} sx={{ px: 5 }}>
-                <Avatar alt='Remy Sharp' />
-              </IconButton>
-            </Tooltip>
+            {isAuthenticated ? (
+              <Tooltip title='Menu do usuário'>
+                <IconButton onClick={toggleDrawerOpen}>
+                  <Avatar alt='Remy Sharp' />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => hadleClick('/login')}
+              >
+                Entrar
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </Container>

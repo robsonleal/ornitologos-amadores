@@ -1,10 +1,14 @@
 import { Button, Stack, useTheme } from '@mui/material';
 import { LayoutBaseDePaginaInicial } from '../../shared/layouts';
 
+import { useNavigate } from 'react-router-dom';
 import MulherImg from '../../shared/assets/mulher_binoculos_d.png';
+import { useAuthContext } from '../../shared/contexts';
 
 export const PaginaInicial = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuthContext();
   const titulo = 'Conheça o melhor catálogo de aves';
   const subtitulo =
     'Registre-se para ser notificado das atualizações no catálogo\
@@ -12,6 +16,9 @@ export const PaginaInicial = () => {
   const image = {
     src: MulherImg,
     alt: 'Mulher segurando binóculos',
+  };
+  const handleClick = (to: string) => {
+    navigate(to);
   };
 
   return (
@@ -29,7 +36,14 @@ export const PaginaInicial = () => {
         <Button variant='contained' color='primary'>
           Ir para o catálogo
         </Button>
-        <Button variant='outlined'>Entrar</Button>
+        {!isAuthenticated && (
+          <Button
+            variant='outlined'
+            onClick={() => handleClick('/cadastro-usuario')}
+          >
+            Registrar
+          </Button>
+        )}
       </Stack>
     </LayoutBaseDePaginaInicial>
   );
