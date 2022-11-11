@@ -12,19 +12,19 @@ import {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <AppThemeProvider>
-        <DrawerProvider>
-          <BarraTopoProvider>
-            <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppThemeProvider>
+          <DrawerProvider>
+            <BarraTopoProvider>
               <MenuLateral>
                 <BarraTopo />
                 <AppRoutes />
               </MenuLateral>
-            </BrowserRouter>
-          </BarraTopoProvider>
-        </DrawerProvider>
-      </AppThemeProvider>
-    </AuthProvider>
+            </BarraTopoProvider>
+          </DrawerProvider>
+        </AppThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
