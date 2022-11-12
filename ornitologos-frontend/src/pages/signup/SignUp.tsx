@@ -1,22 +1,30 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
-import TextField from '@mui/material/TextField';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  Link,
+  TextField,
+} from '@mui/material';
+import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
 import Usuario from '../../models/Usuario';
 import { Copyright } from '../../shared/components/Copyright';
 import { LayoutBaseDePaginaInicial } from '../../shared/layouts';
 import { cadastroUsuario } from '../../shared/services/api/usuario/UsuarioService';
 
+const loginSchema = yup.object().shape({
+  nome: yup.string().required(),
+  email: yup.string().email().required(),
+  senha: yup.string().required().min(3),
+});
+
 export function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const timer = useRef<number>();
 
-  const [userResult, setUserResult] = useState<Usuario>({
+  const [errorsState, setErrorsState] = useState<Usuario>({
     nome: '',
     email: '',
     senha: '',
@@ -27,10 +35,6 @@ export function SignUp() {
     email: '',
     senha: '',
   });
-
-  useEffect(() => {
-    ('');
-  }, [userResult]);
 
   function updateModel(e: ChangeEvent<HTMLInputElement>) {
     setUser({
@@ -44,12 +48,25 @@ export function SignUp() {
 
     setLoading(true);
 
-    if (!loading) {
-      timer.current = window.setTimeout(() => {
-        cadastroUsuario(user, setUserResult);
+    loginSchema
+      .validate(user, { abortEarly: false })
+      .then((dadosValidos) => {
+        cadastroUsuario(dadosValidos).then(() => {
+          setLoading(false);
+        });
+      })
+      .catch((errors: yup.ValidationError) => {
         setLoading(false);
-      }, 2000);
-    }
+        errors.inner.forEach((error) => {
+          if (error.path === 'nome') {
+            setErrorsState((e) => ({ ...e, nome: error.message }));
+          } else if (error.path === 'email') {
+            setErrorsState((e) => ({ ...e, email: error.message }));
+          } else if (error.path === 'senha') {
+            setErrorsState((e) => ({ ...e, senha: error.message }));
+          }
+        });
+      });
   };
 
   const handleClickNavigate = (to: string) => {
@@ -77,6 +94,10 @@ export function SignUp() {
                 id='nome'
                 label='Nome'
                 autoFocus
+                disabled={loading}
+                error={!!errorsState.nome}
+                helperText={errorsState.nome}
+                onKeyDown={() => setErrorsState((e) => ({ ...e, nome: '' }))}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
               />
             </Grid>
@@ -88,6 +109,10 @@ export function SignUp() {
                 label='Email'
                 name='email'
                 autoComplete='email'
+                disabled={loading}
+                error={!!errorsState.email}
+                helperText={errorsState.email}
+                onKeyDown={() => setErrorsState((e) => ({ ...e, email: '' }))}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
               />
             </Grid>
@@ -100,6 +125,10 @@ export function SignUp() {
                 type='password'
                 id='senha'
                 autoComplete='new-password'
+                disabled={loading}
+                error={!!errorsState.senha}
+                helperText={errorsState.senha}
+                onKeyDown={() => setErrorsState((e) => ({ ...e, senha: '' }))}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)}
               />
             </Grid>
