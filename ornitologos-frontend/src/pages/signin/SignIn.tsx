@@ -3,8 +3,8 @@ import {
   Button,
   CircularProgress,
   Grid,
+  Link,
   TextField,
-  Typography,
 } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -107,6 +107,7 @@ export const SignIn = () => {
             <Button
               onClick={handleSubmit}
               disabled={isLoading}
+              color='secondary'
               endIcon={
                 isLoading ? (
                   <CircularProgress
@@ -125,13 +126,13 @@ export const SignIn = () => {
           </Box>
           <Grid container>
             <Grid item>
-              <Typography
+              <Link
                 onClick={() => handleClickNavigate('/cadastro-usuario')}
                 variant='body2'
-                sx={{ textDecoration: 'underline', cursor: 'pointer' }}
+                sx={{ cursor: 'pointer' }}
               >
                 Não tem uma conta? Cadastre-se
-              </Typography>
+              </Link>
             </Grid>
           </Grid>
         </Box>

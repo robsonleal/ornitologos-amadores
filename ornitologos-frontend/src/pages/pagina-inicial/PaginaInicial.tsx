@@ -34,8 +34,8 @@ export const PaginaInicial = () => {
         justifyContent='center'
       >
         <Button
+          color='secondary'
           variant='contained'
-          color='primary'
           onClick={() => handleClickNavigate('/catalogo')}
         >
           Ir para o catálogo
