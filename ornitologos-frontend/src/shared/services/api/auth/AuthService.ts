@@ -22,6 +22,11 @@ const fazerLogin = async (user: UsuarioLogin): Promise<IFazerLogin | Error> => {
   }
 };
 
+export const fazerLogout = () => {
+  localStorage.removeItem('token');
+};
+
 export const AuthService = {
   fazerLogin,
+  fazerLogout,
 };
