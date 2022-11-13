@@ -53,6 +53,7 @@ export function SignUp() {
       .then((dadosValidos) => {
         cadastroUsuario(dadosValidos).then(() => {
           setLoading(false);
+          navigate('/login');
         });
       })
       .catch((errors: yup.ValidationError) => {

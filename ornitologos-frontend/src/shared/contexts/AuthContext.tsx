@@ -6,7 +6,6 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Usuario } from '../models';
 import { AuthService } from '../services/api/auth/AuthService';
 
@@ -26,7 +25,6 @@ const AuthContext = createContext({} as IAuthContextData);
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string>();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN);
@@ -46,7 +44,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     } else {
       localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.token || '');
       setToken(result.token);
-      navigate('/pagina-inicial');
     }
   }, []);
 

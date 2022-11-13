@@ -46,6 +46,7 @@ export const SignIn = () => {
       .then((dadosValidos) => {
         login(dadosValidos.email, dadosValidos.senha).then(() => {
           setIsLoading(false);
+          navigate('/pagina-inicial');
         });
       })
       .catch((errors: yup.ValidationError) => {
