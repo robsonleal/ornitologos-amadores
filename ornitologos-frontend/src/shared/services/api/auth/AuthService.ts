@@ -1,11 +1,7 @@
-import UsuarioLogin from '../../../../models/UsuarioLogin';
+import { Usuario } from '../../../models';
 import { Api } from '../axios-config';
 
-interface IFazerLogin {
-  token: string;
-}
-
-const fazerLogin = async (user: UsuarioLogin): Promise<IFazerLogin | Error> => {
+const fazerLogin = async (user: Usuario): Promise<Usuario | Error> => {
   try {
     const { data } = await Api.post('/api/v1/auth/login', user);
 
@@ -22,11 +18,6 @@ const fazerLogin = async (user: UsuarioLogin): Promise<IFazerLogin | Error> => {
   }
 };
 
-export const fazerLogout = () => {
-  localStorage.removeItem('token');
-};
-
 export const AuthService = {
   fazerLogin,
-  fazerLogout,
 };

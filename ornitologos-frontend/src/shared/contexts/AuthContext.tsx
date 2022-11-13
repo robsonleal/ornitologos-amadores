@@ -7,8 +7,7 @@ import {
   useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UsuarioLogin from '../../models/UsuarioLogin';
-
+import { Usuario } from '../models';
 import { AuthService } from '../services/api/auth/AuthService';
 
 interface IAuthContextData {
@@ -40,7 +39,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   }, []);
 
   const handleLogin = useCallback(async (email: string, senha: string) => {
-    const usuario: UsuarioLogin = { email, senha };
+    const usuario: Usuario = { email, senha };
     const result = await AuthService.fazerLogin(usuario);
     if (result instanceof Error) {
       return result.message;

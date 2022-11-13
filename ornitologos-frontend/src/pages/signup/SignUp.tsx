@@ -9,9 +9,9 @@ import {
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import Usuario from '../../models/Usuario';
 import { Copyright } from '../../shared/components/Copyright';
 import { LayoutBaseDePaginaInicial } from '../../shared/layouts';
+import { Usuario } from '../../shared/models';
 import { cadastroUsuario } from '../../shared/services/api/usuario/UsuarioService';
 
 const loginSchema = yup.object().shape({

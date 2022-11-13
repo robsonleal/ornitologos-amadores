@@ -1,4 +1,4 @@
-import Usuario from '../../../../models/Usuario';
+import { Usuario } from '../../../models';
 import { Api } from '../axios-config';
 
 export const cadastroUsuario = async (dados: Usuario) => {
