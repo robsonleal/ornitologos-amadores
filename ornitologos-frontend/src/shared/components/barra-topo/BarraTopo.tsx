@@ -110,7 +110,7 @@ export function BarraTopo() {
             {isAuthenticated ? (
               <Tooltip title='Menu do usuário'>
                 <IconButton onClick={toggleDrawerOpen}>
-                  <Avatar alt='Remy Sharp' />
+                  <Avatar src='https://github.com/robsonleal.png' />
                 </IconButton>
               </Tooltip>
             ) : (

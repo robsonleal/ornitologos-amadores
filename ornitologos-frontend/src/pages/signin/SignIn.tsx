@@ -3,14 +3,14 @@ import {
   Button,
   CircularProgress,
   Grid,
+  Link,
   TextField,
-  Typography,
 } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import HomemImg from '../../shared/assets/homem_binoculos.png';
-import { Copyright } from '../../shared/components/Copyright';
+import { Copyright } from '../../shared/components';
 import { useAuthContext } from '../../shared/contexts';
 import { LayoutBaseDePaginaInicial } from '../../shared/layouts';
 
@@ -46,6 +46,7 @@ export const SignIn = () => {
       .then((dadosValidos) => {
         login(dadosValidos.email, dadosValidos.senha).then(() => {
           setIsLoading(false);
+          navigate('/pagina-inicial');
         });
       })
       .catch((errors: yup.ValidationError) => {
@@ -107,6 +108,7 @@ export const SignIn = () => {
             <Button
               onClick={handleSubmit}
               disabled={isLoading}
+              color='secondary'
               endIcon={
                 isLoading ? (
                   <CircularProgress
@@ -125,13 +127,13 @@ export const SignIn = () => {
           </Box>
           <Grid container>
             <Grid item>
-              <Typography
+              <Link
                 onClick={() => handleClickNavigate('/cadastro-usuario')}
                 variant='body2'
-                sx={{ textDecoration: 'underline', cursor: 'pointer' }}
+                sx={{ cursor: 'pointer' }}
               >
                 Não tem uma conta? Cadastre-se
-              </Typography>
+              </Link>
             </Grid>
           </Grid>
         </Box>
