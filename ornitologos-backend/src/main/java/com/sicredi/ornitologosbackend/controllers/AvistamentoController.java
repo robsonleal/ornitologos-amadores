@@ -4,39 +4,36 @@ package com.sicredi.ornitologosbackend.controllers;
 import com.sicredi.ornitologosbackend.dtos.AvistamentoDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
 import com.sicredi.ornitologosbackend.entities.Avistamento;
+import com.sicredi.ornitologosbackend.kafka.AvistamentoProducer;
 import com.sicredi.ornitologosbackend.services.AvistamentoServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.List;
+import java.net.URISyntaxException;
 import java.util.Set;
 
 @RestController
 @RequestMapping(value="/avistamentos")
+@RequiredArgsConstructor
 public class AvistamentoController {
 
-    @Autowired
-    private AvistamentoServiceImp avistamentoServiceImp;
+    private final AvistamentoServiceImp avistamentoServiceImp;
+    private final AvistamentoProducer avistamentoProducer;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity <Set<Avistamento>> listarTodos(@AuthenticationPrincipal UsuarioDto usuario) {//retorna objeto encapsulado
         return ResponseEntity.ok().body(avistamentoServiceImp.listarTodos(usuario.getId()));
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> inserirAvistamento(@RequestBody AvistamentoDto avistamentoDto) {
-        Avistamento avistamento = avistamentoServiceImp.converteDoDTO(avistamentoDto);
-        avistamento = avistamentoServiceImp.inserirAvistamento(avistamento);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(avistamento.getId()).toUri();
-        return ResponseEntity.created(uri).build();
-    }
+    @PostMapping
+    public ResponseEntity<AvistamentoDto> inserirAvistamento(@RequestBody AvistamentoDto avistamentoDto) throws URISyntaxException {
+        avistamentoProducer.enviarAvistamento(avistamentoDto);
 
+        return ResponseEntity.created(new URI(String.format("/avistamentos/%d",
+                        avistamentoDto.getId())))
+                .body(avistamentoDto);
+    }
 }
