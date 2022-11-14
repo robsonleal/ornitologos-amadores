@@ -1,4 +1,5 @@
 
+import { Grid } from '@mui/material';
 import Pagination from '@mui/material/Pagination/Pagination';
 import axios from 'axios';
 import {useEffect, useState } from 'react';
@@ -26,7 +27,7 @@ useEffect(() => {
 }, [numeroPagina])
 
   function getPosts(){
-    axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${numeroPagina}&_limit=5`)
+    axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${numeroPagina}&_limit=6`)
     .then((response)=>{
       setPosts(response.data)
     })
@@ -43,12 +44,16 @@ useEffect(() => {
       titulo='Catálogo'
       barraDeFerramentas={<BarraDeFerramentas/>}
     >
-      {
+
+<Grid container spacing={3}>
+{
         posts.map(post=>(
-          <GridCard key={post.id} value={post}/>
+          
+              <GridCard key={post.id} value={post}/>
         ))
       }
-      <Pagination count={10} onChange={handleChange}  />
+  </Grid>
+      <Pagination count={10} onChange={handleChange} color="primary"/>
     </LayoutBaseDePagina>
   );
 };
