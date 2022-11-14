@@ -13,7 +13,7 @@ export const AppRoutes = () => {
       {
         label: 'Meus avistamentos',
         icon: 'visibility',
-        path: '/avistamento',
+        path: '/avistamentos',
       },
     ]);
   }, []);
@@ -22,22 +22,22 @@ export const AppRoutes = () => {
     setBarraTopoOption([
       {
         label: 'Página Inicial',
-        path: '/pagina-inicial',
+        path: '/',
       },
       {
         label: 'Ver catálogo',
-        path: '/catalogo',
+        path: '/aves',
       },
     ]);
   }, []);
 
   return (
     <Routes>
-      <Route path='/pagina-inicial' element={<PaginaInicial />} />
-      <Route path='/catalogo' element={<Catalago />} />
+      <Route path='/' element={<PaginaInicial />} />
+      <Route path='/aves' element={<Catalago />} />
       <Route path='/login' element={<SignIn />} />
-      <Route path='/cadastro-usuario' element={<SignUp />} />
-      <Route path='*' element={<Navigate to='/pagina-inicial' />} />
+      <Route path='/cadastro' element={<SignUp />} />
+      <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );
 };
