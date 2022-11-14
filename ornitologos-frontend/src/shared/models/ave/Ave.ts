@@ -7,7 +7,7 @@ export interface IListagemAve {
   genero: string;
   cor: string;
   familia: string;
-  habitat: string[];
+  habitat?: string[];
 }
 
 export interface IDetalheAve {
@@ -19,7 +19,7 @@ export interface IDetalheAve {
   genero: string;
   cor: string;
   familia: string;
-  habitat: string[];
+  habitat?: string[];
 }
 
 export type IAvesComTotalCount = {
