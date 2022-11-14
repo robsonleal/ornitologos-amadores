@@ -1,0 +1,100 @@
+{
+  "aves": [
+    {
+      "id": 1,
+      "nomePt": "João grande",
+      "nomeEn": "Maguari Stork",
+      "nomeLt": "Ciconia magrari",
+      "tamanho": 85,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ciconiidae",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 2,
+      "nomePt": "Cabeça seca",
+      "nomeEn": "Wood Stork",
+      "nomeLt": "Mycteria americana",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ciconiidae",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 3,
+      "nomePt": "Cisne de pescoço preto",
+      "nomeEn": "Black necked swan",
+      "nomeLt": "Cygnus melancoryphus",
+      "tamanho": 80,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Anatidae"
+    },
+    {
+      "id": 4,
+      "nomePt": "Capororoca",
+      "nomeEn": "Coscoroba swan",
+      "nomeLt": "Cosocoroba coscoroba",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Anatidae",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 5,
+      "nomePt": "Garça branca grande",
+      "nomeEn": "Great egret",
+      "nomeLt": "Ardea alba",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 6,
+      "nomePt": "Garça branca pequena",
+      "nomeEn": "Snowy egret",
+      "nomeLt": "Egretta thula",
+      "tamanho": 40,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 7,
+      "nomePt": "Garça vaqueira",
+      "nomeEn": "Cattle egret",
+      "nomeLt": "Bubulcus ibis",
+      "tamanho": 35,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "habitat": ["CSB", "CAU"]
+    },
+    {
+      "id": 8,
+      "nomePt": "Águia pescadora",
+      "nomeEn": "Osprey",
+      "nomeLt": "Pandion haliaetus",
+      "tamanho": 57,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Pandionidae"
+    },
+    {
+      "id": 9,
+      "nomePt": "Gavião de rabo branco",
+      "nomeEn": "White tailed hawk",
+      "nomeLt": "Geranoaetus albicaudatus",
+      "tamanho": 53,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Accipitridae"
+    }
+  ]
+}

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "mock": "json-server -w -p 3333 ./mock/database.json",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
