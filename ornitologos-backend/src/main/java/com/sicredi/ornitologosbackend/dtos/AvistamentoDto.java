@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class AvistamentoDto {
-
     private Long id;
     private LocalDate data;
     private LocalDateTime horario;

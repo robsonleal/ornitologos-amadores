@@ -15,7 +15,7 @@ interface GridCardProps {
 
 export function GridCard({ value }: GridCardProps) {
   return (
-    <Grid item key={value.id} xs={12} sm={6} md={4}>
+    <Grid item key={value.id} xs={12} sm={6} md={6}>
       <Card
         sx={{
           height: "100%",
@@ -26,8 +26,8 @@ export function GridCard({ value }: GridCardProps) {
         <CardMedia
           component="img"
           sx={{
-            // 16:9
-            pt: "56.25%",
+            16:9
+            // pt: "56.25%",
           }}
           image="https://source.unsplash.com/random"
           alt="random"
