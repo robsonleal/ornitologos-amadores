@@ -11,11 +11,6 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOption([
       {
-        label: 'Ver Perfil',
-        icon: 'person',
-        path: '/pagina-inicial',
-      },
-      {
         label: 'Meus avistamentos',
         icon: 'visibility',
         path: '/avistamento',

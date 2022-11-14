@@ -6,9 +6,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
-import UsuarioLogin from '../../models/UsuarioLogin';
-
+import { Usuario } from '../models';
 import { AuthService } from '../services/api/auth/AuthService';
 
 interface IAuthContextData {
@@ -27,7 +25,6 @@ const AuthContext = createContext({} as IAuthContextData);
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string>();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN);
@@ -40,14 +37,13 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   }, []);
 
   const handleLogin = useCallback(async (email: string, senha: string) => {
-    const usuario: UsuarioLogin = { email, senha };
+    const usuario: Usuario = { email, senha };
     const result = await AuthService.fazerLogin(usuario);
     if (result instanceof Error) {
       return result.message;
     } else {
       localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.token || '');
       setToken(result.token);
-      navigate('/pagina-inicial');
     }
   }, []);
 
