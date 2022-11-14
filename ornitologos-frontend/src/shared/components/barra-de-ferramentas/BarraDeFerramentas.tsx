@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 
 export const BarraDeFerramentas: React.FC = () => {
+  
   const theme = useTheme();
 
   return (
@@ -34,8 +35,7 @@ export const BarraDeFerramentas: React.FC = () => {
           ),
         }}
       />
-
-      <Button variant='contained' color='primary'>
+      <Button variant='contained' color='primary' type='submit'>
         Pesquisar
       </Button>
     </Box>

@@ -7,14 +7,15 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import Post from "../../models/Post";
 
 interface GridCardProps {
-  value: number;
+  value: Post;
 }
 
 export function GridCard({ value }: GridCardProps) {
   return (
-    <Grid item key={value} xs={12} sm={6} md={4}>
+    <Grid item key={value.id} xs={12} sm={6} md={4}>
       <Card
         sx={{
           height: "100%",
@@ -33,11 +34,10 @@ export function GridCard({ value }: GridCardProps) {
         />
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography gutterBottom variant="h5" component="h2">
-            Heading
+            {value.id}
           </Typography>
           <Typography>
-            This is a media card. You can use this section to describe the
-            content.
+            {value.body}
           </Typography>
         </CardContent>
         <CardActions>
