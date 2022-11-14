@@ -5,20 +5,10 @@ import com.sicredi.ornitologosbackend.entities.Ave;
 import com.sicredi.ornitologosbackend.repositories.AveRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -29,16 +19,14 @@ public class AveService {
 
     private final ModelMapper modelMapper;
 
-    public Page<List<Ave>> listarAves(Pageable pageable){
-//        Page<List<Ave>> ave = aveRepository.findAll(pageable);
-//        List<AveDto> dto = ave.stream().map(x-> new AveDto((Ave) x)).collect(Collectors.toList());
-        return aveRepository.findAll(pageable);
+    public Page<AveDto> listarAves(Pageable pageable){
+        Page<Ave> ave = aveRepository.findAll(pageable);
+        return ave.map(x-> new AveDto(x));
     }
-    public List<AveDto> encontrarAves(String busca, Pageable pageable){
-        List<Ave> aves = aveRepository.encontrarAves("%"+busca+"%", pageable);
-        return aves.stream().map(x-> new AveDto(x)).collect(Collectors.toList());
-//        List<AveDto> aveDtos = aves.stream().map(ave -> modelMapper.map(ave, AveDto.class)).collect(Collectors.toList());
-//        return aveDtos;
+    public Page<AveDto> encontrarAves(String busca, Pageable pageable){
+        Page<Ave> aves = aveRepository.encontrarAves("%"+busca+"%", pageable);
+
+        return aves.map(x-> new AveDto(x));
     }
     public AveDto inserirAve(AveDto dto){
         Ave entity = new Ave();
@@ -53,8 +41,6 @@ public class AveService {
         entity = aveRepository.save(entity);
         AveDto aveDto = new AveDto(entity);
         return aveDto;
-//        AveDto aveDto = new AveDto();
-//        BeanUtils.copyProperties(dto, aveDto);
     }
 
 }
