@@ -40,6 +40,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     const usuario: Usuario = { email, senha };
     const result = await AuthService.fazerLogin(usuario);
     if (result instanceof Error) {
+      console.log('oi');
       return result.message;
     } else {
       localStorage.setItem(LOCAL_STORAGE_KEY_ACCESS_TOKEN, result.token || '');

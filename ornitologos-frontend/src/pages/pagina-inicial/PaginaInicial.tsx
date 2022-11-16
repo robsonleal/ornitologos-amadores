@@ -36,14 +36,14 @@ export const PaginaInicial = () => {
         <Button
           color='secondary'
           variant='contained'
-          onClick={() => handleClickNavigate('/catalogo')}
+          onClick={() => handleClickNavigate('/aves')}
         >
           Ir para o catálogo
         </Button>
         {!isAuthenticated && (
           <Button
             variant='outlined'
-            onClick={() => handleClickNavigate('/cadastro-usuario')}
+            onClick={() => handleClickNavigate('/cadastro')}
           >
             Registrar
           </Button>

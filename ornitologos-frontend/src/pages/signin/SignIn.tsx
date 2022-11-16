@@ -128,7 +128,7 @@ export const SignIn = () => {
           <Grid container>
             <Grid item>
               <Link
-                onClick={() => handleClickNavigate('/cadastro-usuario')}
+                onClick={() => handleClickNavigate('/cadastro')}
                 variant='body2'
                 sx={{ cursor: 'pointer' }}
               >
