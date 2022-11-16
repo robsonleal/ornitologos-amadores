@@ -1,7 +1,6 @@
-package com.sicredi.ornitologosbackend.services;
+package com.sicredi.ornitologosbackend.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sicredi.ornitologosbackend.security.UsuarioAuthenticationProvider;
 import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpMethod;

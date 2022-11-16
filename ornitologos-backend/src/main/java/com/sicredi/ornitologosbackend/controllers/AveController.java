@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/v1/aves")
+@RequestMapping("/v1/aves")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AveController {
     private final AveServiceImpl aveServiceImpl;

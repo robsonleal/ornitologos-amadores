@@ -1,6 +1,5 @@
 package com.sicredi.ornitologosbackend.security;
 
-import com.sicredi.ornitologosbackend.services.EmailSenhaAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +16,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @RequiredArgsConstructor
 public class SecurityConfig {
     private  static  final String[] PUBLIC= {"/v1/auth/login","/v1/auth/cadastro"};
+    private  static  final String[] USUARIO_NAO_LOGADO= {"/v1/aves/**"};
 
     private final UsuarioAuthenticationEntryPoint userAuthenticationEntryPoint;
     private final UsuarioAuthenticationProvider userAuthenticationProvider;
@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .addFilterBefore(new JwtAuthFilter(userAuthenticationProvider), EmailSenhaAuthFilter.class)
                 .authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.GET,USUARIO_NAO_LOGADO).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
