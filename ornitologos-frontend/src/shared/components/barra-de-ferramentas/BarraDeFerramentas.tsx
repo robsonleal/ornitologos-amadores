@@ -1,15 +1,30 @@
-import { Search as SearchIcon } from '@mui/icons-material';
 import {
   Box,
   Button,
+  Icon,
   InputAdornment,
   Paper,
   TextField,
   useTheme,
 } from '@mui/material';
 
-export const BarraDeFerramentas: React.FC = () => {
-  
+interface IBarraDeFerramentasProps {
+  textoDaBusca?: string;
+  mostrarInputBusca?: boolean;
+  aoMudarTextoDeBusca?: (novoTexto: string) => void;
+  textoBotaoNovo?: string;
+  mostrarBotaoNovo?: boolean;
+  aoClicarEmNovo?: () => void;
+}
+
+export const BarraDeFerramentas: React.FC<IBarraDeFerramentasProps> = ({
+  textoDaBusca = '',
+  aoMudarTextoDeBusca,
+  mostrarInputBusca = true,
+  aoClicarEmNovo,
+  textoBotaoNovo = 'Novo',
+  mostrarBotaoNovo = false,
+}) => {
   const theme = useTheme();
 
   return (
@@ -22,22 +37,35 @@ export const BarraDeFerramentas: React.FC = () => {
       component={Paper}
       elevation={3}
     >
-      <TextField
-        size='small'
-        label='Pesquisar'
-        id='outlined-start-adornment'
-        sx={{ flexGrow: 1 }}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position='end'>
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
-      <Button variant='contained' color='primary' type='submit'>
-        Pesquisar
-      </Button>
+      {mostrarInputBusca && (
+        <TextField
+          size='small'
+          label='Pesquisar'
+          id='outlined-start-adornment'
+          value={textoDaBusca}
+          placeholder='Comece a digitar sua pesquisa ...'
+          onChange={(e) => aoMudarTextoDeBusca?.(e.target.value)}
+          sx={{ flexGrow: 1 }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position='end'>
+                <Icon>search_icon</Icon>
+              </InputAdornment>
+            ),
+          }}
+        />
+      )}
+
+      {mostrarBotaoNovo && (
+        <Button
+          variant='contained'
+          color='secondary'
+          onClick={aoClicarEmNovo}
+          startIcon={<Icon>add</Icon>}
+        >
+          {textoBotaoNovo}
+        </Button>
+      )}
     </Box>
   );
 };

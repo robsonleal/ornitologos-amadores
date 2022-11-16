@@ -1,59 +1,51 @@
-
-import { Grid } from '@mui/material';
-import Pagination from '@mui/material/Pagination/Pagination';
-import axios from 'axios';
-import {useEffect, useState } from 'react';
-import Post from '../../models/Post';
-import { BarraDeFerramentas } from '../../shared/components';
-import { GridCard } from '../../shared/components/GridCard';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { BarraDeFerramentas, GridCard } from '../../shared/components';
+import { useDebounce } from '../../shared/hooks';
 import { LayoutBaseDePagina } from '../../shared/layouts';
+import { IListagemAve } from '../../shared/models';
+import { AvesService } from '../../shared/services/api/aves/AvesService';
 
 export const Catalago = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { debounce } = useDebounce();
+  const [cards, setCards] = useState<IListagemAve[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const busca = useMemo(() => {
+    return searchParams.get('busca') || '';
+  }, [searchParams]);
 
-  const [numeroPagina,setNumeroPagina]=useState(1);
-  const [posts,setPosts]=useState<Post[]>([]);
-
-useEffect(() => {
-
-  getPosts()
-
-}, [posts.length])
-
-useEffect(() => {
-
-  getPosts()
-
-}, [numeroPagina])
-
-  function getPosts(){
-    axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${numeroPagina}&_limit=6`)
-    .then((response)=>{
-      setPosts(response.data)
-    })
-  }
-
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setNumeroPagina(value)
-    window.scroll(0,0)
-
-  };
+  useEffect(() => {
+    setIsLoading(true);
+    debounce(() => {
+      AvesService.getAll(1, busca).then((result) => {
+        setIsLoading(false);
+        if (result instanceof Error) {
+          alert(result.message);
+        } else {
+          console.log(result);
+          setCards(result.data);
+          setTotalCount(result.totalCount);
+        }
+      });
+    });
+  }, [busca]);
 
   return (
     <LayoutBaseDePagina
       titulo='Catálogo'
-      barraDeFerramentas={<BarraDeFerramentas/>}
-    >
-
-<Grid container spacing={3}>
-{
-        posts.map(post=>(
-          
-              <GridCard key={post.id} value={post}/>
-        ))
+      barraDeFerramentas={
+        <BarraDeFerramentas
+          textoDaBusca={busca}
+          aoMudarTextoDeBusca={(texto) =>
+            setSearchParams({ busca: texto }, { replace: true })
+          }
+        />
       }
-  </Grid>
-      <Pagination count={10} onChange={handleChange} color="primary"/>
+    >
+      <GridCard cards={cards} totalCount={totalCount} />
     </LayoutBaseDePagina>
   );
 };
