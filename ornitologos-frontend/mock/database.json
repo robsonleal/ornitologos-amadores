@@ -9,6 +9,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Ciconiidae",
+      "imagem": "http://2.bp.blogspot.com/-kKsOwPoLdPA/ULy68L2m0UI/AAAAAAAAE0Q/m-wPsbJS16U/s400/Maguari+stork+Coconia+maguari.jpg",
       "habitat": ["CAU", "BCA"]
     },
     {
@@ -20,6 +21,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Ciconiidae",
+      "imagem": "https://passarinhando.com.br/images/especies/cabeca-seca.jpg",
       "habitat": ["CAU", "BCA"]
     },
     {
@@ -30,7 +32,8 @@
       "tamanho": 80,
       "genero": "ambos",
       "cor": "branco",
-      "familia": "Família Anatidae"
+      "familia": "Família Anatidae",
+      "imagem": "https://s3.amazonaws.com/media.wikiaves.com.br/images/8272/2728713q_223aebc8b89062af505e4c67da5880f2.jpg"
     },
     {
       "id": 4,
@@ -41,6 +44,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Anatidae",
+      "imagem": "https://s3.amazonaws.com/media.wikiaves.com.br/images/8791/1978411_38a758956856eedad796b57af5b88712.jpg",
       "habitat": ["CAU", "BCA"]
     },
     {
@@ -52,6 +56,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Ardeidae",
+      "imagem": "https://casadospassaros.net/wp-content/uploads/2016/12/Ardea-alba.jpg",
       "habitat": ["CAU", "BCA"]
     },
     {
@@ -63,6 +68,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Ardeidae",
+      "imagem": "https://bioventuraecoturismoanimal.files.wordpress.com/2013/02/garc3a7a-branca-pequena.jpg",
       "habitat": ["CAU", "BCA"]
     },
     {
@@ -74,6 +80,7 @@
       "genero": "ambos",
       "cor": "branco",
       "familia": "Família Ardeidae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Koereiger_avifauna_alphen_aan_den_rijn.jpg/280px-Koereiger_avifauna_alphen_aan_den_rijn.jpg",
       "habitat": ["CSB", "CAU"]
     },
     {
@@ -84,7 +91,8 @@
       "tamanho": 57,
       "genero": "ambos",
       "cor": "branco",
-      "familia": "Família Pandionidae"
+      "familia": "Família Pandionidae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/OspreyNASA.jpg/280px-OspreyNASA.jpg"
     },
     {
       "id": 9,
@@ -94,7 +102,8 @@
       "tamanho": 53,
       "genero": "ambos",
       "cor": "branco",
-      "familia": "Família Accipitridae"
+      "familia": "Família Accipitridae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/White-tailed_Hawk.jpg/280px-White-tailed_Hawk.jpg"
     }
   ]
 }

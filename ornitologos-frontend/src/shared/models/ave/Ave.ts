@@ -1,3 +1,5 @@
+let tHabitat: 'BCA' | 'BSA' | 'CAA' | 'CAU' | 'CSA' | 'CSB';
+
 export interface IListagemAve {
   id: number;
   nomePt: string;
@@ -7,7 +9,8 @@ export interface IListagemAve {
   genero: string;
   cor: string;
   familia: string;
-  habitat?: string[];
+  imagem: string;
+  habitat?: typeof tHabitat[];
 }
 
 export interface IDetalheAve {
@@ -19,7 +22,8 @@ export interface IDetalheAve {
   genero: string;
   cor: string;
   familia: string;
-  habitat?: string[];
+  imagem: string;
+  habitat?: typeof tHabitat[];
 }
 
 export type IAvesComTotalCount = {
