@@ -7,7 +7,7 @@ const getAll = async (
   filter = ''
 ): Promise<IAvesComTotalCount | Error> => {
   try {
-    const urlRelativa = `/api/v1/aves?page=${page}&size=${Enviroment.LIMITE_AVES}&q=${filter}`;
+    const urlRelativa = `/aves?page=${page}&size=${Enviroment.LIMITE_AVES}&q=${filter}`;
 
     const { data, headers } = await Api.get(urlRelativa);
 
