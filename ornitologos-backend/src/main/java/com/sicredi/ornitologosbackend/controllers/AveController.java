@@ -1,9 +1,8 @@
 package com.sicredi.ornitologosbackend.controllers;
 
 import com.sicredi.ornitologosbackend.dtos.AveDto;
-import com.sicredi.ornitologosbackend.services.AveService;
+import com.sicredi.ornitologosbackend.services.AveServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,18 +15,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/v1/aves")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AveController {
-
-    private final AveService aveService;
-
+    private final AveServiceImpl aveServiceImpl;
     @GetMapping
     public ResponseEntity<Page<AveDto>> encontrarAve(@RequestParam(value = "q",required = false,defaultValue = "") String filtro,
                                                      @PageableDefault(page=0, size=4, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
-        Page<AveDto> aveDto = aveService.encontrarAves(filtro, pageable);
+        Page<AveDto> aveDto = aveServiceImpl.encontrarAves(filtro, pageable);
             return ResponseEntity.ok().body(aveDto);
     }
     @PostMapping
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
-        dto = aveService.inserirAve(dto);
+        dto = aveServiceImpl.inserirAve(dto);
         return ResponseEntity.ok().body(dto);
     }
 }
