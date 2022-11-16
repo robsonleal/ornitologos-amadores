@@ -13,6 +13,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Ave implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
