@@ -1,6 +1,7 @@
-package com.sicredi.ornitologosbackend.configs;
+package com.sicredi.ornitologosbackend.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sicredi.ornitologosbackend.security.UsuarioAuthenticationProvider;
 import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpMethod;
@@ -23,7 +24,7 @@ public class EmailSenhaAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if ("/api/v1/auth/login".equals(request.getServletPath())
+        if ("/v1/auth/login".equals(request.getServletPath())
                 && HttpMethod.POST.matches(request.getMethod())) {
             UsuarioLoginDto credentialsDto = MAPPER.readValue(request.getInputStream(), UsuarioLoginDto.class);
 

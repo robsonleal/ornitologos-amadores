@@ -1,5 +1,6 @@
-package com.sicredi.ornitologosbackend.configs;
+package com.sicredi.ornitologosbackend.security;
 
+import com.sicredi.ornitologosbackend.services.EmailSenhaAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private  static  final String[] PUBLIC= {"/api/v1/auth/login","/api/v1/auth/cadastro"};
+    private  static  final String[] PUBLIC= {"/v1/auth/login","/v1/auth/cadastro"};
 
     private final UsuarioAuthenticationEntryPoint userAuthenticationEntryPoint;
     private final UsuarioAuthenticationProvider userAuthenticationProvider;

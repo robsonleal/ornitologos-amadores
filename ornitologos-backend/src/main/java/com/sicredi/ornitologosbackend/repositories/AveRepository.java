@@ -11,7 +11,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AveRepository extends JpaRepository<Ave, Long> {
 
-    @Query(value = "SELECT u FROM Ave u WHERE lower(cor) like :busca OR upper(cor) like :busca OR lower(familia) like :busca OR upper(familia) like :busca OR lower(genero) like :busca OR upper(genero) like :busca OR lower(habitat) like :busca OR upper(habitat) like :busca OR lower(tamanho) like :busca OR upper(tamanho) like :busca OR lower(nomePt) like :busca OR upper(nomePt) like :busca OR lower(nomeEn) like :busca OR upper(nomeEn) like :busca OR lower(nomeLt) like :busca OR upper(nomeLt) like :busca")
+    @Query(value = "SELECT u FROM Ave u WHERE lower(cor) like :busca " +
+            "OR upper(cor) like :busca OR lower(familia) like :busca " +
+            "OR upper(familia) like :busca OR lower(genero) like :busca " +
+            "OR upper(genero) like :busca OR lower(habitat) like :busca " +
+            "OR upper(habitat) like :busca OR lower(tamanho) like :busca " +
+            "OR upper(tamanho) like :busca OR lower(nomePt) like :busca " +
+            "OR upper(nomePt) like :busca OR lower(nomeEn) like :busca " +
+            "OR upper(nomeEn) like :busca OR lower(nomeLt) like :busca " +
+            "OR upper(nomeLt) like :busca")
     Page<Ave> encontrarAves(@Param("busca") String busca, Pageable pageable);
 
 

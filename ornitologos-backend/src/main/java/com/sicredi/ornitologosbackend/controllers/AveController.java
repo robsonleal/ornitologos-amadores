@@ -13,25 +13,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/aves")
+@RequestMapping(path = "/v1/aves")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AveController {
 
-    @Autowired
-    private AveService aveService;
+    private final AveService aveService;
 
-    @GetMapping(path = "/listar")
-    public ResponseEntity<Page<AveDto>> listarAves(@RequestParam(value = "token") String aves,
-            @PageableDefault(page=0, size=3, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable) {
-        Page<AveDto> allAves = aveService.listarAves(pageable);
-        return ResponseEntity.ok().body(allAves);
-    }
-
-    @GetMapping(path = "/{busca}")
-    public ResponseEntity<Page<AveDto>> encontrarAve(@PathVariable("busca") String busca, @PageableDefault(page=0, size=3, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
-        Page<AveDto> aveDto = aveService.encontrarAves(busca, pageable);
+    @GetMapping
+    public ResponseEntity<Page<AveDto>> encontrarAve(@RequestParam(value = "q",required = false,defaultValue = "") String filtro,
+                                                     @PageableDefault(page=0, size=4, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
+        Page<AveDto> aveDto = aveService.encontrarAves(filtro, pageable);
             return ResponseEntity.ok().body(aveDto);
     }
-
     @PostMapping(path = "/adicionar")
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
         dto = aveService.inserirAve(dto);

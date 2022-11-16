@@ -1,6 +1,6 @@
 package com.sicredi.ornitologosbackend.controllers;
 
-import com.sicredi.ornitologosbackend.configs.UsuarioAuthenticationProvider;
+import com.sicredi.ornitologosbackend.security.UsuarioAuthenticationProvider;
 import com.sicredi.ornitologosbackend.dtos.UsuarioCadastroDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
 import com.sicredi.ornitologosbackend.services.AutenticacaoService;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/v1/auth")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AutenticacaoController {
 

@@ -1,7 +1,7 @@
 package com.sicredi.ornitologosbackend.controllers;
 
 import com.google.gson.Gson;
-import com.sicredi.ornitologosbackend.configs.UsuarioAuthenticationProvider;
+import com.sicredi.ornitologosbackend.security.UsuarioAuthenticationProvider;
 import com.sicredi.ornitologosbackend.dtos.UsuarioCadastroDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
 import com.sicredi.ornitologosbackend.services.AutenticacaoService;
@@ -51,7 +51,7 @@ class AutenticacaoControllerTest {
 
         var json= new Gson().toJson(usuarioCadastro);
 
-        mockMvc.perform(post("/api/v1/auth/cadastro")
+        mockMvc.perform(post("/v1/auth/cadastro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isCreated())
@@ -71,7 +71,7 @@ class AutenticacaoControllerTest {
 
         var json= new Gson().toJson(usuarioCadastro);
 
-        mockMvc.perform(post("/api/v1/auth/cadastro")
+        mockMvc.perform(post("/v1/auth/cadastro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isBadRequest())
@@ -90,7 +90,7 @@ class AutenticacaoControllerTest {
 
         var json= new Gson().toJson(usuarioCadastro);
 
-        mockMvc.perform(post("/api/v1/auth/cadastro")
+        mockMvc.perform(post("/v1/auth/cadastro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isBadRequest())
@@ -107,7 +107,7 @@ class AutenticacaoControllerTest {
 
         var json= new Gson().toJson(usuarioCadastro);
 
-        mockMvc.perform(post("/api/v1/auth/cadastro")
+        mockMvc.perform(post("/v1/auth/cadastro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isBadRequest())
@@ -125,7 +125,7 @@ class AutenticacaoControllerTest {
 
         var json= new Gson().toJson(usuarioCadastro);
 
-        mockMvc.perform(post("/api/v1/auth/cadastro")
+        mockMvc.perform(post("/v1/auth/cadastro")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
                 .andExpect(status().isBadRequest())
