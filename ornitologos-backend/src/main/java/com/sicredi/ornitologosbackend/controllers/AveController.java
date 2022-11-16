@@ -24,7 +24,6 @@ public class AveController {
     }
     @PostMapping
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
-        dto = aveServiceImpl.inserirAve(dto);
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok().body(aveServiceImpl.inserirAve(dto));
     }
 }
