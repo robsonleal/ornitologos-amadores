@@ -1,4 +1,4 @@
-package com.sicredi.ornitologosbackend.configs;
+package com.sicredi.ornitologosbackend.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sicredi.ornitologosbackend.exceptions.dtos.ApiErroDto;

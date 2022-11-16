@@ -1,4 +1,4 @@
-package com.sicredi.ornitologosbackend.configs;
+package com.sicredi.ornitologosbackend.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

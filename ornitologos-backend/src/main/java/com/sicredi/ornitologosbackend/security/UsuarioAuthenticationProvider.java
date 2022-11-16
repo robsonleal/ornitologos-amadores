@@ -1,4 +1,4 @@
-package com.sicredi.ornitologosbackend.configs;
+package com.sicredi.ornitologosbackend.security;
 
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioLoginDto;
