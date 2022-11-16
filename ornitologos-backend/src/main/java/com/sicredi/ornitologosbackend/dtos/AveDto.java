@@ -14,7 +14,7 @@ public class AveDto {
     private String nomePt;
     private String nomeEn;
     private String nomeLt;
-    private Integer tamanho;
+    private String tamanho;
     private String genero;
     private String cor;
     private String familia;
@@ -35,7 +35,7 @@ public class AveDto {
         this.habitat = entity.getHabitat();
     }
 
-    public AveDto(Long id, String nomePt, String nomeEn, String nomeLt, Integer tamanho, String genero, String cor, String familia, String habitat) {
+    public AveDto(Long id, String nomePt, String nomeEn, String nomeLt, String tamanho, String genero, String cor, String familia, String habitat) {
         this.id = id;
         this.nomePt = nomePt;
         this.nomeEn = nomeEn;
