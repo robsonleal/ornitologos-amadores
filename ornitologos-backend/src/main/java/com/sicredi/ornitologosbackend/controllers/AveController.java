@@ -25,7 +25,7 @@ public class AveController {
         Page<AveDto> aveDto = aveService.encontrarAves(filtro, pageable);
             return ResponseEntity.ok().body(aveDto);
     }
-    @PostMapping(path = "/adicionar")
+    @PostMapping
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
         dto = aveService.inserirAve(dto);
         return ResponseEntity.ok().body(dto);
