@@ -3,8 +3,6 @@ package com.sicredi.ornitologosbackend.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -12,7 +10,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Avistamento  {
+public class Avistamento{
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

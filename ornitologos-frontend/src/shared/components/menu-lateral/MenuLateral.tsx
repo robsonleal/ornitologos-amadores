@@ -31,7 +31,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({
   const navigate = useNavigate();
 
   const resolvedPath = useResolvedPath(to);
-  const match = useMatch({ path: resolvedPath.pathname, end: false });
+  const match = useMatch({ path: resolvedPath.pathname, end: true });
 
   const handleClick = () => {
     onClick?.();
@@ -102,7 +102,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
               ))}
               <ListItemLink
                 icon='logout'
-                to='/pagina-inicial'
+                to='/'
                 label='Sair'
                 onClick={() => {
                   logout(), toggleDrawerOpen();

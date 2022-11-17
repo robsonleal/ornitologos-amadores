@@ -1,7 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { useEffect } from 'react';
-import { Catalago, PaginaInicial, SignIn, SignUp } from '../pages';
+import {
+  Avistamentos,
+  Catalago,
+  PaginaInicial,
+  SignIn,
+  SignUp,
+} from '../pages';
 import { useBarraTopoContext, useDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
@@ -13,7 +19,7 @@ export const AppRoutes = () => {
       {
         label: 'Meus avistamentos',
         icon: 'visibility',
-        path: '/avistamento',
+        path: '/avistamentos',
       },
     ]);
   }, []);
@@ -22,22 +28,23 @@ export const AppRoutes = () => {
     setBarraTopoOption([
       {
         label: 'Página Inicial',
-        path: '/pagina-inicial',
+        path: '/',
       },
       {
         label: 'Ver catálogo',
-        path: '/catalogo',
+        path: '/aves',
       },
     ]);
   }, []);
 
   return (
     <Routes>
-      <Route path='/pagina-inicial' element={<PaginaInicial />} />
-      <Route path='/catalogo' element={<Catalago />} />
+      <Route path='/' element={<PaginaInicial />} />
+      <Route path='/aves' element={<Catalago />} />
+      <Route path='/avistamentos' element={<Avistamentos />} />
       <Route path='/login' element={<SignIn />} />
-      <Route path='/cadastro-usuario' element={<SignUp />} />
-      <Route path='*' element={<Navigate to='/pagina-inicial' />} />
+      <Route path='/cadastro' element={<SignUp />} />
+      <Route path='*' element={<Navigate to='/' />} />
     </Routes>
   );
 };

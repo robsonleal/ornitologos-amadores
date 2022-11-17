@@ -1,43 +1,29 @@
 package com.sicredi.ornitologosbackend.controllers;
 
 import com.sicredi.ornitologosbackend.dtos.AveDto;
-import com.sicredi.ornitologosbackend.entities.Ave;
-import com.sicredi.ornitologosbackend.services.AveService;
+import com.sicredi.ornitologosbackend.services.AveServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/aves")
+@RequestMapping("/v1/aves")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AveController {
-
-    @Autowired
-    private AveService aveService;
-
+    private final AveServiceImpl aveServiceImpl;
     @GetMapping
-    public ResponseEntity<List<AveDto>> listarAves(){
-        List<AveDto> aveList = aveService.listarAves();
-        return ResponseEntity.ok().body(aveList);
+    public ResponseEntity<Page<AveDto>> encontrarAve(@RequestParam(value = "q",required = false,defaultValue = "") String filtro,
+                                                     @PageableDefault(page=0, size=2, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
+        Page<AveDto> aveDto = aveServiceImpl.encontrarAves(filtro, pageable);
+            return ResponseEntity.ok().body(aveDto);
     }
-
-    @GetMapping(path = "/{busca}")
-    public ResponseEntity<AveDto> encontrarAve(@PathVariable String busca){
-        AveDto aveDto = aveService.encontrarAve(busca);
-        return ResponseEntity.ok().body(aveDto);
-    }
-
-
-    @PostMapping(path = "/adicionar")
+    @PostMapping
     public ResponseEntity<AveDto> inserirAve(@RequestBody AveDto dto){
-        dto = aveService.inserirAve(dto);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-//                .buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok().body(aveServiceImpl.inserirAve(dto));
     }
 }

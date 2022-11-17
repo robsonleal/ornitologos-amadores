@@ -1,0 +1,209 @@
+{
+  "aves": [
+    {
+      "id": 1,
+      "nomePt": "João grande",
+      "nomeEn": "Maguari Stork",
+      "nomeLt": "Ciconia magrari",
+      "tamanho": 85,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ciconiidae",
+      "imagem": "http://2.bp.blogspot.com/-kKsOwPoLdPA/ULy68L2m0UI/AAAAAAAAE0Q/m-wPsbJS16U/s400/Maguari+stork+Coconia+maguari.jpg",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 2,
+      "nomePt": "Cabeça seca",
+      "nomeEn": "Wood Stork",
+      "nomeLt": "Mycteria americana",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ciconiidae",
+      "imagem": "https://passarinhando.com.br/images/especies/cabeca-seca.jpg",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 3,
+      "nomePt": "Cisne de pescoço preto",
+      "nomeEn": "Black necked swan",
+      "nomeLt": "Cygnus melancoryphus",
+      "tamanho": 80,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Anatidae",
+      "imagem": "https://s3.amazonaws.com/media.wikiaves.com.br/images/8272/2728713q_223aebc8b89062af505e4c67da5880f2.jpg"
+    },
+    {
+      "id": 4,
+      "nomePt": "Capororoca",
+      "nomeEn": "Coscoroba swan",
+      "nomeLt": "Cosocoroba coscoroba",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Anatidae",
+      "imagem": "https://s3.amazonaws.com/media.wikiaves.com.br/images/8791/1978411_38a758956856eedad796b57af5b88712.jpg",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 5,
+      "nomePt": "Garça branca grande",
+      "nomeEn": "Great egret",
+      "nomeLt": "Ardea alba",
+      "tamanho": 65,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "imagem": "https://casadospassaros.net/wp-content/uploads/2016/12/Ardea-alba.jpg",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 6,
+      "nomePt": "Garça branca pequena",
+      "nomeEn": "Snowy egret",
+      "nomeLt": "Egretta thula",
+      "tamanho": 40,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "imagem": "https://bioventuraecoturismoanimal.files.wordpress.com/2013/02/garc3a7a-branca-pequena.jpg",
+      "habitat": ["CAU", "BCA"]
+    },
+    {
+      "id": 7,
+      "nomePt": "Garça vaqueira",
+      "nomeEn": "Cattle egret",
+      "nomeLt": "Bubulcus ibis",
+      "tamanho": 35,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Ardeidae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Koereiger_avifauna_alphen_aan_den_rijn.jpg/280px-Koereiger_avifauna_alphen_aan_den_rijn.jpg",
+      "habitat": ["CSB", "CAU"]
+    },
+    {
+      "id": 8,
+      "nomePt": "Águia pescadora",
+      "nomeEn": "Osprey",
+      "nomeLt": "Pandion haliaetus",
+      "tamanho": 57,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Pandionidae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/OspreyNASA.jpg/280px-OspreyNASA.jpg"
+    },
+    {
+      "id": 9,
+      "nomePt": "Gavião de rabo branco",
+      "nomeEn": "White tailed hawk",
+      "nomeLt": "Geranoaetus albicaudatus",
+      "tamanho": 53,
+      "genero": "ambos",
+      "cor": "branco",
+      "familia": "Família Accipitridae",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/White-tailed_Hawk.jpg/280px-White-tailed_Hawk.jpg"
+    }
+  ],
+  "avistamentos": [
+    {
+      "id": 1,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 2,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 3,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 4,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 5,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 6,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 7,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 8,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 9,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 10,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 11,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 12,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 13,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    },
+    {
+      "id": 14,
+      "data": "10/10/2022",
+      "horario": "08:00",
+      "local": "Lagoa dos patos",
+      "ave": "Marreco"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { Api } from '../axios-config';
 
 export const cadastroUsuario = async (dados: Usuario) => {
   try {
-    const { data } = await Api.post('/api/v1/auth/cadastro', dados);
+    const { data } = await Api.post('/auth/cadastro', dados);
 
     if (data) {
       return { data };

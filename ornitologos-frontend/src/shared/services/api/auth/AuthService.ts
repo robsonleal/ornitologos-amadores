@@ -3,7 +3,7 @@ import { Api } from '../axios-config';
 
 const fazerLogin = async (user: Usuario): Promise<Usuario | Error> => {
   try {
-    const { data } = await Api.post('/api/v1/auth/login', user);
+    const { data } = await Api.post('/auth/login', user);
 
     if (data) {
       return data;
@@ -11,7 +11,6 @@ const fazerLogin = async (user: Usuario): Promise<Usuario | Error> => {
 
     return new Error('Erro no login!');
   } catch (error) {
-    console.log(error);
     return new Error(
       (error as { message: string }).message || 'Erro no login.'
     );
