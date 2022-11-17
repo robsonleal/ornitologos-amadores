@@ -48,6 +48,5 @@ public class AveServiceImpl implements AveService{
                         .split(","))
                       .map(Habitat::valueOf)
                       .collect(Collectors.toList());
-
     }
 }

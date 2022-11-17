@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Setter
-@Builder
 public class AveDto {
 
     private Long id;

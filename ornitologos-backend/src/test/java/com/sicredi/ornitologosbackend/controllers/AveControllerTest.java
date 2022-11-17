@@ -3,6 +3,7 @@ package com.sicredi.ornitologosbackend.controllers;
 import com.google.gson.Gson;
 import com.sicredi.ornitologosbackend.dtos.AveDto;
 import com.sicredi.ornitologosbackend.services.AveServiceImpl;
+import com.sicredi.ornitologosbackend.types.Habitat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.*;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,7 +36,9 @@ public class AveControllerTest {
 
     @Test
     public void deveRetornarTodasAsAves() throws Exception {
-        Pageable pageable = PageRequest.of(0, 5, Sort.by("nomePt").ascending());
+        Pageable pageable = PageRequest.of(0, 2, Sort.by("nomePt").ascending());
+
+    List<Habitat> habitats= Arrays.asList(Habitat.CCA,Habitat.CSA,Habitat.CAU);
 
         var ave = AveDto.builder()
                 .id(1L)
@@ -45,7 +49,7 @@ public class AveControllerTest {
                 .familia("Passaros")
                 .cor("Azul")
                 .genero("Masculino")
-                .habitat("Tropical")
+                .habitat(habitats)
                 .build();
 
         List<AveDto> lista = Collections.singletonList(ave);
@@ -55,11 +59,9 @@ public class AveControllerTest {
         when(aveService.encontrarAves("", pageable))
                 .thenReturn(aveDto);
 
-        var json= new Gson().toJson(aveDto);
+        var json= new Gson().toJson(ave);
 
-        mockMvc.perform(get("/v1/aves/").param("q", "")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
+        mockMvc.perform(get("/v1/aves/").param("q", ""))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[0].id").value(1L))
                 .andExpect(jsonPath("$.content[0].nomePt").value("Beija-Flor"))
@@ -69,7 +71,9 @@ public class AveControllerTest {
                 .andExpect(jsonPath("$.content[0].familia").value("Passaros"))
                 .andExpect(jsonPath("$.content[0].cor").value("Azul"))
                 .andExpect(jsonPath("$.content[0].genero").value("Masculino"))
-                .andExpect(jsonPath("$.content[0].habitat").value("Tropical"));
+                .andExpect(jsonPath("$.content[0].habitat[0]").value("CCA"))
+                .andExpect(jsonPath("$.content[0].habitat[1]").value("CSA"))
+                .andExpect(jsonPath("$.content[0].habitat[2]").value("CAU"));
 
         verify(aveService).encontrarAves("", pageable);
     }
