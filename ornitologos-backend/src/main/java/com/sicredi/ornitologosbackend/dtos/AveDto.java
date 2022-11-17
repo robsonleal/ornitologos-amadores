@@ -1,13 +1,17 @@
 package com.sicredi.ornitologosbackend.dtos;
 
+import com.sicredi.ornitologosbackend.types.Habitat;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 @Builder
+@Setter
 public class AveDto {
 
     private Long id;
@@ -18,5 +22,5 @@ public class AveDto {
     private String genero;
     private String cor;
     private String familia;
-    private String habitat;
+    private List<Habitat> habitat=new ArrayList<>();
 }

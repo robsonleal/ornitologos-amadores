@@ -18,7 +18,7 @@ public class AveController {
     private final AveServiceImpl aveServiceImpl;
     @GetMapping
     public ResponseEntity<Page<AveDto>> encontrarAve(@RequestParam(value = "q",required = false,defaultValue = "") String filtro,
-                                                     @PageableDefault(page=0, size=4, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
+                                                     @PageableDefault(page=0, size=2, sort = "nomePt", direction = Sort.Direction.ASC) Pageable pageable){
         Page<AveDto> aveDto = aveServiceImpl.encontrarAves(filtro, pageable);
             return ResponseEntity.ok().body(aveDto);
     }

@@ -15,8 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Avistamento implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Avistamento{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +31,5 @@ public class Avistamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
-
 
 }
