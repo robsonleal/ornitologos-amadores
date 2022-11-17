@@ -15,9 +15,4 @@ public interface AvistamentoService {
     Avistamento inserirAvistamento(Avistamento avistamento);
 
     Avistamento converteDoDTO(AvistamentoDto avistamentoDto);
-
-    LocalDate inserirDataLocal(LocalDate localDate);
-
-    LocalDateTime inserirDataLocalTime(LocalDateTime localDateTime);
-
 }

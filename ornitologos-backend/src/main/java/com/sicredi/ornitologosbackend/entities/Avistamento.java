@@ -17,8 +17,8 @@ public class Avistamento  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate data;
-    private LocalDateTime horario;
+    private String data;
+    private String horario;
     private String local;
 
     @ManyToOne

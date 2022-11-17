@@ -15,22 +15,22 @@ import java.net.URISyntaxException;
 import java.util.Set;
 
 @RestController
-@RequestMapping(value="/avistamentos")
+@RequestMapping(value="/v1/avistamentos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AvistamentoController {
 
     private final AvistamentoServiceImp avistamentoServiceImp;
     private final AvistamentoProducer avistamentoProducer;
 
     @GetMapping
-    public ResponseEntity <Set<Avistamento>> listarTodos(@AuthenticationPrincipal UsuarioDto usuario) {//retorna objeto encapsulado
+    public ResponseEntity <Set<Avistamento>> listarTodos(@AuthenticationPrincipal UsuarioDto usuario) {
         return ResponseEntity.ok().body(avistamentoServiceImp.listarTodos(usuario.getId()));
     }
 
     @PostMapping
     public ResponseEntity<AvistamentoDto> inserirAvistamento(@AuthenticationPrincipal UsuarioDto usuario, @RequestBody AvistamentoDto avistamentoDto) throws URISyntaxException {
         avistamentoProducer.enviarAvistamento(avistamentoDto);
-
         return ResponseEntity.created(new URI(String.format("/avistamentos/%d",
                         avistamentoDto.getId())))
                 .body(avistamentoDto);
