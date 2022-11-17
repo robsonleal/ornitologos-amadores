@@ -13,6 +13,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Ave implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,6 +60,17 @@ public class Ave implements Serializable {
     @NotNull
     @Setter
     private String habitat;
+
+    public Ave(String nomePt, String nomeEn, String nomeLt, String tamanho, String genero, String cor, String familia, String habitat) {
+        this.nomePt = nomePt;
+        this.nomeEn = nomeEn;
+        this.nomeLt = nomeLt;
+        this.tamanho = tamanho;
+        this.genero = genero;
+        this.cor = cor;
+        this.familia = familia;
+        this.habitat = habitat;
+    }
 
     @Override
     public boolean equals(Object o) {
