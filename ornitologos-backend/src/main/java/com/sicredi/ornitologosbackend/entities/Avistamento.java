@@ -6,17 +6,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
-import java.io.Serializable;
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Avistamento implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Avistamento  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +28,4 @@ public class Avistamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
-
-
 }

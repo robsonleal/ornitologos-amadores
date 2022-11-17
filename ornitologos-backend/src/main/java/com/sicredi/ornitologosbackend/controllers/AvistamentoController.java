@@ -1,6 +1,5 @@
 package com.sicredi.ornitologosbackend.controllers;
 
-
 import com.sicredi.ornitologosbackend.dtos.AvistamentoDto;
 import com.sicredi.ornitologosbackend.dtos.UsuarioDto;
 import com.sicredi.ornitologosbackend.entities.Avistamento;
@@ -29,7 +28,7 @@ public class AvistamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<AvistamentoDto> inserirAvistamento(@RequestBody AvistamentoDto avistamentoDto) throws URISyntaxException {
+    public ResponseEntity<AvistamentoDto> inserirAvistamento(@AuthenticationPrincipal UsuarioDto usuario, @RequestBody AvistamentoDto avistamentoDto) throws URISyntaxException {
         avistamentoProducer.enviarAvistamento(avistamentoDto);
 
         return ResponseEntity.created(new URI(String.format("/avistamentos/%d",
