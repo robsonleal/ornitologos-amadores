@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import BCA from '../../assets/habitats/BCA.png';
 import BSA from '../../assets/habitats/BSA.png';
 import CAA from '../../assets/habitats/CAA.png';
@@ -21,5 +22,9 @@ export const Habitat: React.FC<IHabitatProps> = ({ habitat }) => {
     ['CSB', CSB],
   ]);
 
-  return <img src={imagens.get(habitat)} width={70} height={50} />;
+  return (
+    <Box padding={1}>
+      <img src={imagens.get(habitat)} width={40} height={30} />
+    </Box>
+  );
 };

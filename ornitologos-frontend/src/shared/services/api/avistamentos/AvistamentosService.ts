@@ -1,21 +1,22 @@
 import { Enviroment } from '../../../environment';
-import { IAvesComTotalCount, IDetalheAve } from '../../../models';
+import { IAvistamentoComTotalCount, IDetalheAve } from '../../../models';
 import { Api } from '../axios-config';
 
 const getAll = async (
   page = 1,
   filter = ''
-): Promise<IAvesComTotalCount | Error> => {
+): Promise<IAvistamentoComTotalCount | Error> => {
   try {
-    // const urlRelativa = `/aves?page=${page}&size=${Enviroment.LIMITE_AVES}&q=${filter}`;
-    const urlRelativa = `/aves?_page=${page}&_limit=${Enviroment.LIMITE_AVES}&nomePt_like=${filter}`;
+    const urlRelativa = `/avistamentos?_page=${page}&_limit=${Enviroment.LIMITE_AVISTAMENTOS}&ave_like=${filter}`;
 
     const { data, headers } = await Api.get(urlRelativa);
 
     if (data) {
       return {
         data,
-        totalCount: Number(headers['x-total-count'] || Enviroment.LIMITE_AVES),
+        totalCount: Number(
+          headers['x-total-count'] || Enviroment.LIMITE_AVISTAMENTOS
+        ),
       };
     }
 
@@ -86,7 +87,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
   }
 };
 
-export const AvesService = {
+export const AvistamentosService = {
   getAll,
   getById,
   create,
