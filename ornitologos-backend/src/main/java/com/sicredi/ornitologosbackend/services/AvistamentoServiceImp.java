@@ -1,14 +1,13 @@
 package com.sicredi.ornitologosbackend.services;
 
 import com.sicredi.ornitologosbackend.dtos.AvistamentoDto;
+import com.sicredi.ornitologosbackend.entities.Ave;
 import com.sicredi.ornitologosbackend.entities.Avistamento;
 import com.sicredi.ornitologosbackend.repositories.AvistamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
+
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -29,16 +28,6 @@ public class AvistamentoServiceImp implements AvistamentoService {
 
     @Override
     public Avistamento converteDoDTO(AvistamentoDto avistamentoDto) {
-        return new Avistamento(avistamentoDto.getId(),avistamentoDto.getData(),avistamentoDto.getHorario(),avistamentoDto.getLocal(),avistamentoDto.getAve(),null);
-    }
-
-    @Override
-    public LocalDate inserirDataLocal(LocalDate localDate) {
-        return localDate;
-    }
-
-    @Override
-    public LocalDateTime inserirDataLocalTime(LocalDateTime localDateTime) {
-        return localDateTime;
+        return new Avistamento(avistamentoDto.getId(),avistamentoDto.getData(),avistamentoDto.getHorario(),avistamentoDto.getLocal(), new Ave(),null);
     }
 }

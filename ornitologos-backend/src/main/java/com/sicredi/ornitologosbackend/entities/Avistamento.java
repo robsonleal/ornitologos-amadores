@@ -3,11 +3,6 @@ package com.sicredi.ornitologosbackend.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-
-import java.io.Serializable;
 
 @Entity
 @Getter
@@ -17,11 +12,12 @@ import java.io.Serializable;
 @Builder
 public class Avistamento{
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate data;
-    private LocalDateTime horario;
+    private String data;
+    private String horario;
     private String local;
 
     @ManyToOne
@@ -31,5 +27,4 @@ public class Avistamento{
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
 }
